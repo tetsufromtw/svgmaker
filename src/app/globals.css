@@ -24,3 +24,20 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* SVG 自適應樣式 */
+.svg-container svg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* 🟦 自訂 Tailwind 樣式套到 SVG 地圖區塊 */
+.geolonia-svg-map .prefecture {
+  @apply fill-gray-100 stroke-gray-500 hover:fill-blue-300 cursor-pointer transition duration-200;
+}
+
+.geolonia-svg-map .boundary-line {
+  @apply stroke-gray-300;
+}
