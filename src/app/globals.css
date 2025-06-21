@@ -41,3 +41,16 @@ body {
 .geolonia-svg-map .boundary-line {
   @apply stroke-gray-300;
 }
+
+/* 隱藏滾動條 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
