@@ -3,11 +3,16 @@
 
 import { useEffect, useState, useRef } from 'react'
 import InfoCard from './InfoCard'
+import { useMapClick } from '@/hooks/useMapClick'
 
 export default function MapCanvas() {
     const [svgContent, setSvgContent] = useState<string>('')
-    const [isLoading, setIsLoading] = useState(true)
-    const containerRef = useRef<HTMLDivElement>(null)
+    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [svgLoaded, setSvgLoaded] = useState<boolean>(false)
+    const containerRef = useRef<HTMLDivElement>(null!)
+
+    // 使用自定義 Hook 處理點擊
+    useMapClick(containerRef, svgLoaded)
 
     useEffect(() => {
         // 載入 SVG
@@ -27,7 +32,6 @@ export default function MapCanvas() {
 
                     // 確保有 viewBox
                     if (!svgElement.hasAttribute('viewBox')) {
-                        // 如果沒有 viewBox，嘗試從原始寬高創建
                         const width = svgElement.getAttribute('width') || '800'
                         const height = svgElement.getAttribute('height') || '600'
                         svgElement.setAttribute('viewBox', `0 0 ${width} ${height}`)
@@ -41,35 +45,13 @@ export default function MapCanvas() {
                     svgElement.style.height = '100%'
                     svgElement.style.maxWidth = '100%'
                     svgElement.style.maxHeight = '100%'
-                    const prefectureGroups = doc.querySelectorAll('g.prefecture')
-                    prefectureGroups.forEach((group) => {
-                        const titleElement = group.querySelector('title')
-                        const name = titleElement?.textContent?.split('/')[0].trim() || '未知'
-
-                        const path = group.querySelector('path')
-                        if (!path) {
-                            console.warn('❌ skipping group: no path found')
-                            return
-                        }
-
-                        const bbox = path.getBBox()
-
-                        const text = document.createElementNS('http://www.w3.org/2000/svg', 'text')
-                        text.setAttribute('x', (bbox.x + bbox.width / 2).toString())
-                        text.setAttribute('y', (bbox.y + bbox.height / 2).toString())
-                        text.setAttribute('text-anchor', 'middle')
-                        text.setAttribute('alignment-baseline', 'middle')
-                        text.setAttribute('font-size', '10')
-                        text.setAttribute('fill', '#ff0000') // 你看得到的紅色
-                        text.textContent = name
-
-                        group.appendChild(text)  // ⬅️ 這裡改成加到 group 裡面
-                    })
 
                     setSvgContent(svgElement.outerHTML)
-                }
+                    setIsLoading(false)
 
-                setIsLoading(false)
+                    // 通知 SVG 已載入
+                    setTimeout(() => setSvgLoaded(true), 0)
+                }
             })
             .catch(err => {
                 console.error('Failed to load SVG:', err)
@@ -93,7 +75,6 @@ export default function MapCanvas() {
                     className="w-full h-full flex items-center justify-center"
                     dangerouslySetInnerHTML={{ __html: svgContent }}
                     style={{
-                        // 確保 SVG 容器不會溢出
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',

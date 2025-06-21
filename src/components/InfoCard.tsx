@@ -12,7 +12,7 @@ export default function InfoCard() {
                 <div className="flex items-center gap-2">
                     <div className="w-4 h-4 bg-red-500 rounded"></div>
                     <span className="flex-1">住居（居住過）</span>
-                    <span className="text-gray-600">等級：5</span>
+                    <span className="text-red-600">等級：5</span>
                 </div>
                 <div className="flex items-center gap-2">
                     <div className="w-4 h-4 bg-orange-500 rounded"></div>
