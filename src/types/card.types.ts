@@ -1,34 +1,25 @@
 // src/types/card.types.ts
 
-export interface BaseCard {
-    id: string
+// InfoCard 的圖例項目
+export interface LegendItem {
+    label: string
+    color: string
+    level: string | number
+}
+
+// InfoCard 的配置
+export interface InfoCardConfig {
     title: string
-    type: 'info' | 'stats' | 'chart' | 'custom'
+    subtitle?: string
+    legendItems: LegendItem[]
+}
+
+// 卡片資料
+export interface CardData {
+    id: string
     order: number
+    config: InfoCardConfig
 }
-
-export interface InfoCardData extends BaseCard {
-    type: 'info'
-    content: {
-        description?: string
-        stats?: Array<{
-            label: string
-            value: string | number
-        }>
-    }
-}
-
-export interface StatsCardData extends BaseCard {
-    type: 'stats'
-    content: {
-        mainValue: string | number
-        subValue?: string
-        trend?: 'up' | 'down' | 'neutral'
-        trendValue?: string
-    }
-}
-
-export type CardData = InfoCardData | StatsCardData
 
 export interface CardContextType {
     cards: CardData[]

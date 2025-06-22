@@ -4,8 +4,10 @@
 import { useEffect, useState, useRef } from 'react'
 import InfoCard from './InfoCard'
 import { useMapClick } from '@/hooks/useMapClick'
+import { useCardContext } from '@/context/CardContext'
 
 export default function MapCanvas() {
+    const { cards, selectedCardId } = useCardContext()
     const [svgContent, setSvgContent] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [svgLoaded, setSvgLoaded] = useState<boolean>(false)
@@ -14,11 +16,17 @@ export default function MapCanvas() {
     // 使用自定義 Hook 處理點擊
     useMapClick(containerRef, svgLoaded)
 
+    const selectedCard = cards.find(card => card.id === selectedCardId)
+
     useEffect(() => {
+        console.log('MapCanvas useEffect triggered')
+
         // 載入 SVG
         fetch('/map/japan.svg')
             .then(res => res.text())
             .then(svg => {
+                console.log('SVG loaded')
+
                 // 處理 SVG，確保它有正確的屬性
                 const parser = new DOMParser()
                 const doc = parser.parseFromString(svg, 'image/svg+xml')
@@ -60,9 +68,13 @@ export default function MapCanvas() {
     }, [])
 
     return (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 h-full relative">
-            {/* InfoCard 疊加在地圖上 */}
-            <InfoCard />
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 h-full relative overflow-hidden">
+            {/* InfoCard 疊加在地圖上 - 確保是絕對定位 */}
+            {selectedCard && (
+                <div className="absolute top-4 left-4 z-10">
+                    <InfoCard config={selectedCard.config} enableColorPicker={true} />
+                </div>
+            )}
 
             {/* 地圖內容 */}
             {isLoading ? (

@@ -1,37 +1,94 @@
+// src/components/MapCanvas.tsx
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
+import InfoCard from './InfoCard'
+import { useMapClick } from '@/hooks/useMapClick'
+import { useCardContext } from '@/context/CardContext'
 
-const tabs = [
-    { id: 'japan', label: '日本 🗾', available: true },
-    { id: 'taiwan', label: '台灣 🏝️', available: false },
-    { id: 'usa', label: '美國 🗽', available: false },
-]
+export default function MapCanvas() {
+    const { cards, selectedCardId } = useCardContext()
+    const [svgContent, setSvgContent] = useState<string>('')
+    const [isLoading, setIsLoading] = useState<boolean>(true)
+    const [svgLoaded, setSvgLoaded] = useState<boolean>(false)
+    const containerRef = useRef<HTMLDivElement>(null!)
 
-export default function MapTabs() {
-    const [activeTab, setActiveTab] = useState('japan')
+    // 使用自定義 Hook 處理點擊
+    useMapClick(containerRef, svgLoaded)
+
+    const selectedCard = cards.find(card => card.id === selectedCardId)
+
+    useEffect(() => {
+        // 載入 SVG
+        fetch('/map/japan.svg')
+            .then(res => res.text())
+            .then(svg => {
+                // 處理 SVG，確保它有正確的屬性
+                const parser = new DOMParser()
+                const doc = parser.parseFromString(svg, 'image/svg+xml')
+                const svgElement = doc.querySelector('svg')
+
+                if (svgElement) {
+                    svgElement.classList.add('geolonia-svg-map')
+                    // 移除固定的寬高，讓 SVG 可以自適應
+                    svgElement.removeAttribute('width')
+                    svgElement.removeAttribute('height')
+
+                    // 確保有 viewBox
+                    if (!svgElement.hasAttribute('viewBox')) {
+                        const width = svgElement.getAttribute('width') || '800'
+                        const height = svgElement.getAttribute('height') || '600'
+                        svgElement.setAttribute('viewBox', `0 0 ${width} ${height}`)
+                    }
+
+                    // 設定 preserveAspectRatio 保持比例
+                    svgElement.setAttribute('preserveAspectRatio', 'xMidYMid meet')
+
+                    // 設定樣式讓 SVG 填滿容器
+                    svgElement.style.width = '100%'
+                    svgElement.style.height = '100%'
+                    svgElement.style.maxWidth = '100%'
+                    svgElement.style.maxHeight = '100%'
+
+                    setSvgContent(svgElement.outerHTML)
+                    setIsLoading(false)
+
+                    // 通知 SVG 已載入
+                    setTimeout(() => setSvgLoaded(true), 0)
+                }
+            })
+            .catch(err => {
+                console.error('Failed to load SVG:', err)
+                setIsLoading(false)
+            })
+    }, [])
 
     return (
-        <div className="flex items-end mb-0">
-            {tabs.map((tab) => (
-                <button
-                    key={tab.id}
-                    onClick={() => tab.available && setActiveTab(tab.id)}
-                    className={`
-            px-6 py-2 rounded-t-lg border border-b-0 transition-all
-            ${activeTab === tab.id
-                            ? 'bg-white border-gray-200 z-10 shadow-sm'
-                            : 'bg-gray-100 border-transparent hover:bg-gray-200'
-                        }
-            ${!tab.available ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
-          `}
-                    disabled={!tab.available}
-                >
-                    <span className="text-sm font-medium">
-                        {tab.label}
-                    </span>
-                </button>
-            ))}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 h-full relative">
+            {/* InfoCard 疊加在地圖上 */}
+            {selectedCard && (
+                <div className="absolute top-4 left-4 z-10">
+                    <InfoCard config={selectedCard.config} enableColorPicker={true} />
+                </div>
+            )}
+
+            {/* 地圖內容 */}
+            {isLoading ? (
+                <div className="h-full flex items-center justify-center">
+                    <div className="text-gray-400">載入地圖中...</div>
+                </div>
+            ) : (
+                <div
+                    ref={containerRef}
+                    className="w-full h-full flex items-center justify-center"
+                    dangerouslySetInnerHTML={{ __html: svgContent }}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                />
+            )}
         </div>
     )
 }

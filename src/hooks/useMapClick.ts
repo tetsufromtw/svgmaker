@@ -6,7 +6,7 @@ import { useMapContext } from '@/context/MapContext'
 import {
     getPrefectureId,
     findPrefectureElement,
-    updatePrefectureColor as updatePrefectureColorDOM,
+    updatePrefectureColor,
     initializePrefectureColors
 } from '@/lib/svgUtils'
 
@@ -14,57 +14,43 @@ export function useMapClick(
     containerRef: RefObject<HTMLDivElement>,
     svgLoaded: boolean
 ) {
-    const { prefectureColors, currentColor, updatePrefectureColor } = useMapContext()
+    const { prefectureColors, setPrefectureColor, selectedColor } = useMapContext()
 
     useEffect(() => {
-        if (!containerRef.current || !svgLoaded) return
+        if (!svgLoaded || !containerRef.current) return
+
+        console.log('useMapClick effect triggered')
 
         const svg = containerRef.current.querySelector('svg')
-        if (!svg) return
+        if (!svg) {
+            console.log('No SVG found in useMapClick')
+            return
+        }
 
-        // 初始化已有的顏色
+        // 初始化已存在的顏色
         initializePrefectureColors(svg, prefectureColors)
 
-        // 點擊事件處理
-        const handleClick = (event: MouseEvent) => {
-            const target = event.target as Element
+        const handleClick = (e: MouseEvent) => {
+            const target = e.target as Element
             const prefectureElement = findPrefectureElement(target)
 
-            if (!prefectureElement) return
+            if (prefectureElement) {
+                const prefectureId = getPrefectureId(prefectureElement)
 
-            const prefectureId = getPrefectureId(prefectureElement)
-            if (!prefectureId) return
+                if (prefectureId) {
+                    // 使用當前選中的顏色
+                    updatePrefectureColor(prefectureElement, selectedColor)
+                    setPrefectureColor(prefectureId, selectedColor)
 
-            // 更新顏色
-            updatePrefectureColor(prefectureId, currentColor)
-            updatePrefectureColorDOM(prefectureElement, currentColor)
-
-            // 防止事件冒泡
-            event.stopPropagation()
+                    console.log(`設定 ${prefectureId} 顏色為:`, selectedColor)
+                }
+            }
         }
 
-        // 雙點擊事件處理
-        const handleDoubleClick = (event: MouseEvent) => {
-            const target = event.target as Element
-            const prefectureElement = findPrefectureElement(target)
-            if (!prefectureElement) return
-            const prefectureId = getPrefectureId(prefectureElement)
-            if (!prefectureId) return
-            // 清除顏色
-            updatePrefectureColor(prefectureId, '')
-            updatePrefectureColorDOM(prefectureElement, '')
-            // 防止事件冒泡
-            event.stopPropagation()
-        }
-
-        // 綁定事件
         svg.addEventListener('click', handleClick)
-        svg.addEventListener('dblclick', handleDoubleClick)
 
-        // 清理函式
         return () => {
             svg.removeEventListener('click', handleClick)
-            svg.removeEventListener('dblclick', handleDoubleClick)
         }
-    }, [containerRef, svgLoaded, currentColor, prefectureColors, updatePrefectureColor])
+    }, [svgLoaded, prefectureColors, setPrefectureColor, selectedColor])
 }

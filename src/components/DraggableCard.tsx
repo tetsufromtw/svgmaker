@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { CardData } from '@/types/card.types'
 import { useCardContext } from '@/context/CardContext'
+import InfoCard from './InfoCard'
 
 interface DraggableCardProps {
     card: CardData
@@ -27,7 +28,6 @@ export default function DraggableCard({
     const handleDragStart = (e: React.DragEvent) => {
         setIsDragging(true)
         onDragStart(index)
-        // 設定拖拽數據
         e.dataTransfer.effectAllowed = 'move'
     }
 
@@ -51,35 +51,15 @@ export default function DraggableCard({
             onDragEnd={handleDragEnd}
             onClick={handleClick}
             className={`
-        min-w-[200px] h-[120px] p-4 rounded-lg cursor-move
-        transition-all duration-200 select-none
+        cursor-move transition-all duration-200 select-none
         ${isDragging ? 'opacity-50' : ''}
-        ${isSelected
-                    ? 'bg-blue-500 text-white shadow-lg scale-105'
-                    : 'bg-white border border-gray-200 hover:border-blue-300 hover:shadow-md'
-                }
+        ${isSelected ? 'scale-105 ring-4 ring-blue-400 ring-offset-2 rounded-lg' : ''}
       `}
         >
-            <h3 className={`font-semibold text-sm mb-2 ${isSelected ? 'text-white' : 'text-gray-800'}`}>
-                {card.title}
-            </h3>
-
-            {card.type === 'info' && (
-                <p className={`text-xs ${isSelected ? 'text-blue-100' : 'text-gray-600'}`}>
-                    {card.content.description}
-                </p>
-            )}
-
-            {card.type === 'stats' && (
-                <div>
-                    <div className={`text-2xl font-bold ${isSelected ? 'text-white' : 'text-gray-800'}`}>
-                        {card.content.mainValue}
-                    </div>
-                    <div className={`text-xs ${isSelected ? 'text-blue-100' : 'text-gray-500'}`}>
-                        {card.content.subValue}
-                    </div>
-                </div>
-            )}
+            <InfoCard
+                config={card.config}
+                className={isSelected ? 'shadow-xl' : 'hover:shadow-lg'}
+            />
         </div>
     )
 }
