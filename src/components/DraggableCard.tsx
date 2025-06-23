@@ -53,7 +53,8 @@ export default function DraggableCard({
             className={`
         cursor-move transition-all duration-200 select-none
         ${isDragging ? 'opacity-50' : ''}
-        ${isSelected ? 'scale-105 ring-4 ring-blue-400 ring-offset-2 rounded-lg' : ''}
+        ${isSelected ? 'scale-none ring-4 ring-blue-400 ring-offset-2 rounded-lg' : ''}
+        scale-100
       `}
         >
             <InfoCard
