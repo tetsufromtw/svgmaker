@@ -29,6 +29,12 @@ export function MapProvider({ children }: { children: ReactNode }) {
         }))
     }
 
+    // 提供一個重置選中顏色的方法
+    const resetSelectedColor = () => {
+        setSelectedColor('#ef4444')
+        setSelectedLevel(5)
+    }
+
     return (
         <MapContext.Provider
             value={{
