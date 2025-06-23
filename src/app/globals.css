@@ -35,11 +35,11 @@ body {
 
 /* 🟦 自訂 Tailwind 樣式套到 SVG 地圖區塊 */
 .geolonia-svg-map .prefecture {
-  @apply fill-gray-100 stroke-gray-500 hover:fill-blue-300 cursor-pointer transition duration-200;
+  @apply fill-white stroke-black hover:fill-blue-300 cursor-pointer transition duration-200;
 }
 
 .geolonia-svg-map .boundary-line {
-  @apply stroke-gray-300;
+  @apply stroke-black;
 }
 
 /* 隱藏滾動條 */
