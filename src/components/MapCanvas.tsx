@@ -19,14 +19,10 @@ export default function MapCanvas() {
     const selectedCard = cards.find(card => card.id === selectedCardId)
 
     useEffect(() => {
-        console.log('MapCanvas useEffect triggered')
-
         // 載入 SVG
         fetch('/map/japan.svg')
             .then(res => res.text())
             .then(svg => {
-                console.log('SVG loaded')
-
                 // 處理 SVG，確保它有正確的屬性
                 const parser = new DOMParser()
                 const doc = parser.parseFromString(svg, 'image/svg+xml')
@@ -68,8 +64,8 @@ export default function MapCanvas() {
     }, [])
 
     return (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 h-full relative overflow-hidden">
-            {/* InfoCard 疊加在地圖上 - 確保是絕對定位 */}
+        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 h-full relative">
+            {/* InfoCard 疊加在地圖上 */}
             {selectedCard && (
                 <div className="absolute top-4 left-4 z-10">
                     <InfoCard config={selectedCard.config} enableColorPicker={true} />

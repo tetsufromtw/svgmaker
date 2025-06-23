@@ -22,13 +22,13 @@ export default function Home() {
                 <MapTabs />
               </div>
 
-              {/* 地圖區 - 彈性填充，但有最小高度限制 */}
-              <div className="flex-1 min-h-0 pb-4">
+              {/* 地圖區 - 使用 flex-1 自動填充剩餘空間 */}
+              <div className="flex-1 min-h-0 my-4 overflow-hidden">
                 <MapCanvas />
               </div>
 
               {/* 底部控制區 - 固定高度 */}
-              <div className="flex-shrink-0 bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
+              <div className="flex-shrink-0 bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4" style={{ minHeight: '280px', maxHeight: '280px' }}>
                 <DataSelector />
               </div>
             </div>

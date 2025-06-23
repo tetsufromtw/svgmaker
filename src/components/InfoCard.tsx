@@ -11,18 +11,12 @@ interface InfoCardProps {
 }
 
 export default function InfoCard({ config, className = '', enableColorPicker = false }: InfoCardProps) {
-    // 只有在需要選色功能時才使用 MapContext
-    const { selectedColor, setSelectedColor, selectedLevel, setSelectedLevel } = enableColorPicker ? useMapContext() : {
-        selectedColor: null,
-        setSelectedColor: () => { },
-        selectedLevel: null,
-        setSelectedLevel: () => { }
-    }
+    const mapContext = enableColorPicker ? useMapContext() : null
 
     const handleItemClick = (color: string, level: string | number) => {
-        if (enableColorPicker) {
-            setSelectedColor(color)
-            setSelectedLevel(level)
+        if (enableColorPicker && mapContext) {
+            mapContext.setSelectedColor(color)
+            mapContext.setSelectedLevel(level)
         }
     }
 
@@ -38,8 +32,8 @@ export default function InfoCard({ config, className = '', enableColorPicker = f
             <div className="space-y-1 text-sm">
                 {config.legendItems.map((item, index) => {
                     const isSelected = enableColorPicker &&
-                        selectedColor === item.color &&
-                        selectedLevel === item.level
+                        mapContext?.selectedColor === item.color &&
+                        mapContext?.selectedLevel === item.level
 
                     return (
                         <div
