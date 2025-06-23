@@ -2,15 +2,27 @@
 'use client'
 
 import React, { createContext, useContext, useState, ReactNode } from 'react'
-import { PrefectureColors, MapContextType } from '@/types/map.types'
+
+interface MapContextType {
+    currentMap: string
+    setCurrentMap: (map: string) => void
+    prefectureColors: Record<string, string>
+    setPrefectureColor: (prefectureId: string, color: string) => void
+    selectedColor: string
+    setSelectedColor: (color: string) => void
+    selectedLevel: number | string
+    setSelectedLevel: (level: number | string) => void
+}
 
 const MapContext = createContext<MapContextType | undefined>(undefined)
 
 export function MapProvider({ children }: { children: ReactNode }) {
-    const [prefectureColors, setPrefectureColors] = useState<PrefectureColors>({})
-    const [currentColor, setCurrentColor] = useState('#FF0000')
+    const [currentMap, setCurrentMap] = useState('japan')
+    const [prefectureColors, setPrefectureColors] = useState<Record<string, string>>({})
+    const [selectedColor, setSelectedColor] = useState<string>('#ef4444') // 預設紅色
+    const [selectedLevel, setSelectedLevel] = useState<number | string>(5) // 預設等級5
 
-    const updatePrefectureColor = (prefectureId: string, color: string) => {
+    const setPrefectureColor = (prefectureId: string, color: string) => {
         setPrefectureColors(prev => ({
             ...prev,
             [prefectureId]: color
@@ -20,10 +32,14 @@ export function MapProvider({ children }: { children: ReactNode }) {
     return (
         <MapContext.Provider
             value={{
+                currentMap,
+                setCurrentMap,
                 prefectureColors,
-                currentColor,
-                updatePrefectureColor,
-                setCurrentColor
+                setPrefectureColor,
+                selectedColor,
+                setSelectedColor,
+                selectedLevel,
+                setSelectedLevel
             }}
         >
             {children}
