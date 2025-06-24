@@ -361,6 +361,8 @@ export default function MapCanvas() {
                 <div
                     ref={(el) => {
                         if (!el) return
+                        containerRef.current = el
+                        if (el.querySelector('svg')) return
                         el.innerHTML = svgContent
 
                         const svgEl = el.querySelector('svg')

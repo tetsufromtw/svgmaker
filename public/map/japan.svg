@@ -8,9 +8,8 @@
 			<g class="okinawa kyusyu-okinawa prefecture" data-code="47">
 				<title>沖縄 / Okinawa</title>
 				<g>
-					<path d="M144.9,456.4c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H144.9z" fill="white" stroke="none" stroke-width="1"/>
-					<text x="157.7" y="480" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">沖</text>
-					<text x="157.7" y="540" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">縄</text>
+					<path d="M144.9,456.4c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H144.9z" fill="white" stroke="#666" stroke-width="1"/>
+					<text x="157.7" y="480" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">沖縄</text>
 				</g>
 			</g>
 			
