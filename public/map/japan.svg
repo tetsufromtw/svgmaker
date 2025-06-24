@@ -4,206 +4,340 @@
 	<desc>Created by Geolonia (https://geolonia.com/).</desc>
 	<g class="svg-map">
 		<g class="prefectures">
+			<!-- 沖縄県 - 垂直 -->
 			<g class="okinawa kyusyu-okinawa prefecture" data-code="47">
-      <title>沖縄 / Okinawa</title>
+				<title>沖縄 / Okinawa</title>
 				<g>
-					<path d="M144.9,456.4c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H144.9z"/>
+					<path d="M144.9,456.4c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H144.9z" fill="white" stroke="none" stroke-width="1"/>
+					<text x="157.7" y="480" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">沖</text>
+					<text x="157.7" y="540" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">縄</text>
 				</g>
 			</g>
+			
+			<!-- 鹿児島県 - 横向き -->
 			<g class="kagoshima kyusyu kyusyu-okinawa prefecture" data-code="46">
-        <title>鹿児島 / Kagoshima</title>
-				<path d="M99.3,912.7c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h116.8c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H99.3z"/>
+				<title>鹿児島 / Kagoshima</title>
+				<path d="M99.3,912.7c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h116.8c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H99.3z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="157.7" y="960" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">鹿児島</text>
 			</g>
+			
+			<!-- 宮崎県 - 垂直 -->
 			<g class="miyazaki kyusyu kyusyu-okinawa prefecture" data-code="45">
-        <title>宮崎 / Miyazaki</title>
-				<path d="M167.8,821.5c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H167.8z"/>
+				<title>宮崎 / Miyazaki</title>
+				<path d="M167.8,821.5c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H167.8z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="192" y="845" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">宮崎</text>
 			</g>
+			
+			<!-- 大分県 - 垂直 -->
 			<g class="oita kyusyu kyusyu-okinawa prefecture" data-code="44">
-        <title>大分 / Oita</title>
-				<path d="M167.8,730.2c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H167.8z"/>
+				<title>大分 / Oita</title>
+				<path d="M167.8,730.2c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H167.8z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="192" y="754" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">大分</text>
 			</g>
+			
+			<!-- 熊本県 - 垂直 -->
 			<g class="kumamoto kyusyu kyusyu-okinawa prefecture" data-code="43">
-        <title>熊本 / kumamoto</title>
-				<path d="M99.3,730.2c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8V738.2c0-4.4-3.6-8-8-8H99.3z"/>
+				<title>熊本 / kumamoto</title>
+				<path d="M99.3,730.2c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8V738.2c0-4.4-3.6-8-8-8H99.3z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="123.5" y="790" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">熊本</text>
 			</g>
+			
+			<!-- 長崎県 - 垂直 -->
 			<g class="nagasaki kyusyu kyusyu-okinawa prefecture" data-code="42">
-        <title>長崎 / Nagasaki</title>
-				<path d="M8,638.9c-4.4,0-8,3.6-8,8v94c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-94c0-4.4-3.6-8-8-8H8z"/>
+				<title>長崎 / Nagasaki</title>
+				<path d="M8,638.9c-4.4,0-8,3.6-8,8v94c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-94c0-4.4-3.6-8-8-8H8z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="20.8" y="670" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">長崎</text>
 			</g>
+			
+			<!-- 佐賀県 - 垂直 -->
 			<g class="saga kyusyu kyusyu-okinawa prefecture" data-code="41">
-        <title>佐賀 / Saga</title>
-				<path d="M53.7,638.9c-4.4,0-8,3.6-8,8v94c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-94c0-4.4-3.6-8-8-8H53.7z"/>
+				<title>佐賀 / Saga</title>
+				<path d="M53.7,638.9c-4.4,0-8,3.6-8,8v94c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-94c0-4.4-3.6-8-8-8H53.7z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="66.5" y="670" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">佐賀</text>
 			</g>
+			
+			<!-- 福岡県 - 横向き -->
 			<g class="fukuoka kyusyu kyusyu-okinawa prefecture" data-code="40">
-        <title>福岡 / Fukuoka</title>
-				<path d="M99.3,638.9c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h116.8c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H99.3z"/>
+				<title>福岡 / Fukuoka</title>
+				<path d="M99.3,638.9c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h116.8c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H99.3z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="157.7" y="687" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">福岡</text>
 			</g>
+			
+			<!-- 高知県 - 横向き -->
 			<g class="kochi shikoku prefecture" data-code="39">
-        <title>高知 / Kochi</title>
-				<path d="M281.9,935.6c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8H353c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H281.9z"/>
+				<title>高知 / Kochi</title>
+				<path d="M281.9,935.6c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8H353c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H281.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="317.5" y="972" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">高知</text>
 			</g>
+			
+			<!-- 愛媛県 - 横向き -->
 			<g class="ehime sikoku prefecture" data-code="38">
-        <title>愛媛 / Ehime</title>
-				<path d="M281.9,867.1c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8H353c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H281.9z"/>
+				<title>愛媛 / Ehime</title>
+				<path d="M281.9,867.1c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8H353c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H281.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="317.5" y="903" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">愛媛</text>
 			</g>
+			
+			<!-- 香川県 - 横向き -->
 			<g class="kagawa shikoku prefecture" data-code="37">
-        <title>香川 / Kagawa</title>
-				<path d="M373.1,867.1c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H373.1z"/>
+				<title>香川 / Kagawa</title>
+				<path d="M373.1,867.1c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H373.1z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="408.7" y="903" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">香川</text>
 			</g>
+			
+			<!-- 徳島県 - 横向き -->
 			<g class="tokushima shikoku prefecture" data-code="36">
-        <title>徳島 / Tokushima</title>
-				<path d="M373.1,935.6c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H373.1z"/>
+				<title>徳島 / Tokushima</title>
+				<path d="M373.1,935.6c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H373.1z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="408.7" y="972" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">徳島</text>
 			</g>
+			
+			<!-- 山口県 - 垂直 -->
 			<g class="yamaguchi chugoku prefecture" data-code="35">
-        <title>山口 / Yamaguchi</title>
-				<path d="M281.9,638.9c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H281.9z"/>
+				<title>山口 / Yamaguchi</title>
+				<path d="M281.9,638.9c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H281.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="294.7" y="700" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">山口</text>
 			</g>
+			
+			<!-- 広島県 - 垂直 -->
 			<g class="hiroshima chugoku prefecture" data-code="34">
-        <title>広島 / Hiroshima</title>
-				<path d="M327.5,730.2c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H327.5z"/>
+				<title>広島 / Hiroshima</title>
+				<path d="M327.5,730.2c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H327.5z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="351.7" y="754" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">広島</text>
 			</g>
+			
+			<!-- 岡山県 - 垂直 -->
 			<g class="okayama chugoku prefecture" data-code="33">
-        <title>岡山 / Okayama</title>
-				<path d="M395.9,730.2c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H395.9z"/>
+				<title>岡山 / Okayama</title>
+				<path d="M395.9,730.2c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H395.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="408.7" y="754" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">岡山</text>
 			</g>
+			
+			<!-- 島根県 - 横向き -->
 			<g class="shimane chugoku prefecture" data-code="32">
-        <title>島根 / Shimane</title>
-				<path d="M327.5,638.9c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H327.5z"/>
+				<title>島根 / Shimane</title>
+				<path d="M327.5,638.9c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H327.5z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="351.7" y="687" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">島根</text>
 			</g>
+			
+			<!-- 鳥取県 - 垂直 -->
 			<g class="tottori chugoku prefecture" data-code="31">
-        <title>鳥取 / Tottori</title>
-				<path d="M395.9,638.9c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H395.9z"/>
+				<title>鳥取 / Tottori</title>
+				<path d="M395.9,638.9c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H395.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="408.7" y="663" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">鳥取</text>
 			</g>
+			
+			<!-- 和歌山県 - 横向き -->
 			<g class="wakayama kinki prefecture" data-code="30">
-        <title>和歌山 / Wakayama</title>
-				<path d="M510,958.4c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-25.6c0-4.4-3.6-8-8-8H510z"/>
+				<title>和歌山 / Wakayama</title>
+				<path d="M510,958.4c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-25.6c0-4.4-3.6-8-8-8H510z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="544.6" y="984" font-family="Yomogi" font-size="14" fill="black" text-anchor="middle">和歌山</text>
 			</g>
+			
+			<!-- 奈良県 - 垂直 -->
 			<g class="nara kinki prefecture" data-code="29">
-        <title>奈良 / Nara</title>
-				<path d="M555.7,775.8c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V783.9c0-4.4-3.6-8-8-8H555.7z"/>
+				<title>奈良 / Nara</title>
+				<path d="M555.7,775.8c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V783.9c0-4.4-3.6-8-8-8H555.7z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="568.5" y="840" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">奈良</text>
 			</g>
+			
+			<!-- 兵庫県 - 垂直 -->
 			<g class="hyogo kinki prefecture" data-code="28">
-        <title>兵庫 / Hyogo</title>
-				<path d="M441.6,638.9c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8H490c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H441.6z"/>
+				<title>兵庫 / Hyogo</title>
+				<path d="M441.6,638.9c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8H490c4.4,0,8-3.6,8-8V647c0-4.4-3.6-8-8-8H441.6z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="465.8" y="700" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">兵庫</text>
 			</g>
+			
+			<!-- 大阪府 - 垂直 -->
 			<g class="osaka kinki prefecture" data-code="27">
-        <title>大阪 / Osaka</title>
-				<path d="M510,775.8c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V783.9c0-4.4-3.6-8-8-8H510z"/>
+				<title>大阪 / Osaka</title>
+				<path d="M510,775.8c-4.4,0-8,3.6-8,8v162.5c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V783.9c0-4.4-3.6-8-8-8H510z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="522.8" y="840" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">大阪</text>
 			</g>
+			
+			<!-- 京都府 -->
 			<g class="kyoto kinki prefecture" data-code="26">
-        <title>京都 / Kyoto</title>
-				<path d="M510,638.9c-4.4,0-8,3.6-8,8v116.8c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8h-25.6c-6.6,0-12-5.4-12-12
-					V647c0-4.4-3.6-8-8-8H510z"/>
+				<title>京都 / Kyoto</title>
+				<path d="M510,638.9c-4.4,0-8,3.6-8,8v116.8c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8h-25.6c-6.6,0-12-5.4-12-12V647c0-4.4-3.6-8-8-8H510z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="544.6" y="710" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">京都</text>
 			</g>
+			
+			<!-- 滋賀県 - 垂直 -->
 			<g class="shiga kinki prefecture" data-code="25">
-        <title>滋賀 / Shiga</title>
-				<path d="M601.3,684.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H601.3z"/>
+				<title>滋賀 / Shiga</title>
+				<path d="M601.3,684.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H601.3z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="614.1" y="708" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">滋賀</text>
 			</g>
+			
+			<!-- 三重県 - 垂直 -->
 			<g class="mie kinki prefecture" data-code="24">
-        <title>三重 / Mie</title>
-				<path d="M601.3,775.8c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V783.9c0-4.4-3.6-8-8-8H601.3z"/>
+				<title>三重 / Mie</title>
+				<path d="M601.3,775.8c-4.4,0-8,3.6-8,8V992c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V783.9c0-4.4-3.6-8-8-8H601.3z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="614.1" y="860" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">三重</text>
 			</g>
+			
+			<!-- 愛知県 - 横向き -->
 			<g class="aichi chubu prefecture" data-code="23">
-        <title>愛知 / Aichi</title>
-				<path d="M647,867.1c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H647z"/>
+				<title>愛知 / Aichi</title>
+				<path d="M647,867.1c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H647z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="682.6" y="915" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">愛知</text>
 			</g>
+			
+			<!-- 静岡県 - 横向き -->
 			<g class="shizuoka chubu prefecture" data-code="22">
-        <title>静岡 / Shizuoka</title>
-				<path d="M738.2,867.1c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H738.2z"/>
+				<title>静岡 / Shizuoka</title>
+				<path d="M738.2,867.1c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H738.2z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="773.8" y="915" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">静岡</text>
 			</g>
+			
+			<!-- 岐阜県 - 垂直 -->
 			<g class="gifu chubu prefecture" data-code="21">
-        <title>岐阜 / Gifu</title>
-				<path d="M647,593.3c-4.4,0-8,3.6-8,8v253.7c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8V601.3c0-4.4-3.6-8-8-8H647z"/>
+				<title>岐阜 / Gifu</title>
+				<path d="M647,593.3c-4.4,0-8,3.6-8,8v253.7c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8V601.3c0-4.4-3.6-8-8-8H647z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="671.2" y="700" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">岐阜</text>
 			</g>
+			
+			<!-- 長野県 - 垂直 -->
 			<g class="nagano chubu prefecture" data-code="20">
-        <title>長野 / Nagano</title>
-				<path d="M715.4,593.3c-4.4,0-8,3.6-8,8v253.7c0,4.4,3.6,8,8,8H741c4.4,0,8-3.6,8-8v-71.2c0-6.6,5.4-12,12-12h2.7c4.4,0,8-3.6,8-8
-					V601.3c0-4.4-3.6-8-8-8H715.4z"/>
+				<title>長野 / Nagano</title>
+				<path d="M715.4,593.3c-4.4,0-8,3.6-8,8v253.7c0,4.4,3.6,8,8,8H741c4.4,0,8-3.6,8-8v-71.2c0-6.6,5.4-12,12-12h2.7c4.4,0,8-3.6,8-8V601.3c0-4.4-3.6-8-8-8H715.4z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="728.2" y="700" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">長野</text>
 			</g>
+			
+			<!-- 山梨県 - 横向き -->
 			<g class="yamanashi chubu prefecture" data-code="19">
-        <title>山梨 / Yamanashi</title>
-				<path d="M761,775.8c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H761z"/>
+				<title>山梨 / Yamanashi</title>
+				<path d="M761,775.8c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H761z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="785.2" y="823" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">山梨</text>
 			</g>
+			
+			<!-- 福井県 -->
 			<g class="fukui chubu prefecture" data-code="18">
-        <title>福井 / Fukui</title>
-				<path d="M555.7,638.9c-4.4,0-8,3.6-8,8v25.6c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8h-25.6c-4.4,0-8,3.6-8,8
-					v25.6c0,6.6-5.4,12-12,12H555.7z"/>
+				<title>福井 / Fukui</title>
+				<path d="M555.7,638.9c-4.4,0-8,3.6-8,8v25.6c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8h-25.6c-4.4,0-8,3.6-8,8v25.6c0,6.6-5.4,12-12,12H555.7z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="591.3" y="640" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">福井</text>
 			</g>
+			
+			<!-- 石川県 - 垂直 -->
 			<g class="ishikawa chubu prefecture" data-code="17">
-        <title>石川 / Ishikawa</title>
-				<path d="M601.3,433.6c-4.4,0-8,3.6-8,8v139.6c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V441.6c0-4.4-3.6-8-8-8H601.3z"/>
+				<title>石川 / Ishikawa</title>
+				<path d="M601.3,433.6c-4.4,0-8,3.6-8,8v139.6c0,4.4,3.6,8,8,8h25.6c4.4,0,8-3.6,8-8V441.6c0-4.4-3.6-8-8-8H601.3z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="614.1" y="490" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">石川</text>
 			</g>
+			
+			<!-- 富山県 - 横向き -->
 			<g class="toyama chubu prefecture" data-code="16">
-        <title>富山 / Toyama</title>
-				<path d="M647,502c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8V510c0-4.4-3.6-8-8-8H647z"/>
+				<title>富山 / Toyama</title>
+				<path d="M647,502c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8V510c0-4.4-3.6-8-8-8H647z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="682.6" y="550" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">富山</text>
 			</g>
+			
+			<!-- 新潟県 -->
 			<g class="niigata chubu prefecture" data-code="15">
-        <title>新潟 / Niigata</title>
-				<path d="M738.2,502c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8V464.4c0-4.4-3.6-8-8-8h-25.6c-4.4,0-8,3.6-8,8V490
-					c0,6.6-5.4,12-12,12H738.2z"/>
+				<title>新潟 / Niigata</title>
+				<path d="M738.2,502c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h71.2c4.4,0,8-3.6,8-8V464.4c0-4.4-3.6-8-8-8h-25.6c-4.4,0-8,3.6-8,8V490c0,6.6-5.4,12-12,12H738.2z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="773.8" y="550" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">新潟</text>
 			</g>
+			
+			<!-- 神奈川県 - 横向き -->
 			<g class="kanagawa kanto prefecture" data-code="14">
-        <title>神奈川 / Kanagawa</title>
-				<path d="M829.5,867.1c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H829.5z"/>
+				<title>神奈川 / Kanagawa</title>
+				<path d="M829.5,867.1c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H829.5z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="853.7" y="903" font-family="Yomogi" font-size="14" fill="black" text-anchor="middle">神奈川</text>
 			</g>
+			
+			<!-- 東京都 -->
 			<g class="tokyo kanto prefecture" data-code="13">
-        <title>東京 / Tokyo</title>
-				<path d="M829.5,775.8c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-2.7c0-6.6,5.4-12,12-12h25.6c4.4,0,8-3.6,8-8
-					v-48.4c0-4.4-3.6-8-8-8H829.5z"/>
+				<title>東京 / Tokyo</title>
+				<path d="M829.5,775.8c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-2.7c0-6.6,5.4-12,12-12h25.6c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H829.5z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="877" y="823" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">東京</text>
 			</g>
+			
+			<!-- 千葉県 - 垂直 -->
 			<g class="chiba kanto prefecture" data-code="12">
-        <title>千葉 / Chiba</title>
-				<path d="M943.6,730.2c-4.4,0-8,3.6-8,8v208.1c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8V738.2c0-4.4-3.6-8-8-8H943.6z"/>
+				<title>千葉 / Chiba</title>
+				<path d="M943.6,730.2c-4.4,0-8,3.6-8,8v208.1c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8V738.2c0-4.4-3.6-8-8-8H943.6z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="967.8" y="820" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">千葉</text>
 			</g>
+			
+			<!-- 埼玉県 - 横向き -->
 			<g class="saitama kanto prefecture" data-code="11">
-        <title>埼玉 / Saitama</title>
-				<path d="M783.9,684.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h139.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H783.9z"/>
+				<title>埼玉 / Saitama</title>
+				<path d="M783.9,684.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h139.6c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H783.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="853.7" y="732" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">埼玉</text>
 			</g>
+			
+			<!-- 群馬県 - 横向き -->
 			<g class="gunma kanto prefecture" data-code="10">
-        <title>群馬 / Gunma</title>
-				<path d="M783.9,593.3c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8H848c1.5,0,3.7-3.1,3.7-8v-71.2c0-4.9-2.2-8-3.7-8H783.9z"/>
+				<title>群馬 / Gunma</title>
+				<path d="M783.9,593.3c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8H848c1.5,0,3.7-3.1,3.7-8v-71.2c0-4.9-2.2-8-3.7-8H783.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="816" y="641" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">群馬</text>
 			</g>
+			
+			<!-- 栃木県 - 横向き -->
 			<g class="tochigi kanto prefecture" data-code="9">
-        <title>栃木 / Tochigi</title>
-				<path d="M859.4,593.3c-1.5,0-3.7,3.1-3.7,8v71.2c0,4.9,2.2,8,3.7,8h64.1c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H859.4z"/>
+				<title>栃木 / Tochigi</title>
+				<path d="M859.4,593.3c-1.5,0-3.7,3.1-3.7,8v71.2c0,4.9,2.2,8,3.7,8h64.1c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H859.4z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="891.5" y="641" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">栃木</text>
 			</g>
+			
+			<!-- 茨城県 - 垂直 -->
 			<g class="ibaraki kanto prefecture" data-code="8">
-        <title>茨城 / Ibaraki</title>
-				<path d="M943.6,593.3c-4.4,0-8,3.6-8,8v116.8c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8V601.3c0-4.4-3.6-8-8-8H943.6z"/>
+				<title>茨城 / Ibaraki</title>
+				<path d="M943.6,593.3c-4.4,0-8,3.6-8,8v116.8c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8V601.3c0-4.4-3.6-8-8-8H943.6z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="967.8" y="640" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle" writing-mode="tb-rl">茨城</text>
 			</g>
+			
+			<!-- 福島県 - 横向き -->
 			<g class="fukushima tohoku prefecture" data-code="7">
-        <title>福島 / Fukushima</title>
-				<path d="M829.5,456.4c-4.4,0-8,3.6-8,8v116.8c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8V464.4c0-4.4-3.6-8-8-8H829.5z"/>
+				<title>福島 / Fukushima</title>
+				<path d="M829.5,456.4c-4.4,0-8,3.6-8,8v116.8c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8V464.4c0-4.4-3.6-8-8-8H829.5z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="910.8" y="527" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">福島</text>
 			</g>
+			
+			<!-- 山形県 - 横向き -->
 			<g class="yamagata tohoku prefecture" data-code="6">
-        <title>山形 / Yamagata</title>
-				<path d="M783.9,387.9c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H783.9z"/>
+				<title>山形 / Yamagata</title>
+				<path d="M783.9,387.9c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H783.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="830.9" y="426" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">山形</text>
 			</g>
+			
+			<!-- 秋田県 - 横向き -->
 			<g class="akita tohoku prefecture" data-code="5">
-        <title>秋田 / Akita</title>
-				<path d="M783.9,296.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H783.9z"/>
+				<title>秋田 / Akita</title>
+				<path d="M783.9,296.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H783.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="830.9" y="344" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">秋田</text>
 			</g>
+			
+			<!-- 宮城県 - 横向き -->
 			<g class="miyagi tohoku prefecture" data-code="4">
-        <title>宮城 / Miyagi</title>
-				<path d="M898,387.9c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H898z"/>
+				<title>宮城 / Miyagi</title>
+				<path d="M898,387.9c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H898z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="945" y="426" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">宮城</text>
 			</g>
+			
+			<!-- 岩手県 - 横向き -->
 			<g class="iwate tohoku prefecture" data-code="3">
-        <title>岩手 / Iwate</title>
-				<path d="M898,296.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H898z"/>
+				<title>岩手 / Iwate</title>
+				<path d="M898,296.6c-4.4,0-8,3.6-8,8v71.2c0,4.4,3.6,8,8,8h94c4.4,0,8-3.6,8-8v-71.2c0-4.4-3.6-8-8-8H898z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="945" y="344" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">岩手</text>
 			</g>
+			
+			<!-- 青森県 - 横向き -->
 			<g class="aomori tohoku prefecture" data-code="2">
-        <title>青森 / Aomori</title>
-				<path d="M783.9,228.2c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H783.9z"/>
+				<title>青森 / Aomori</title>
+				<path d="M783.9,228.2c-4.4,0-8,3.6-8,8v48.4c0,4.4,3.6,8,8,8H992c4.4,0,8-3.6,8-8v-48.4c0-4.4-3.6-8-8-8H783.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="888" y="266" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">青森</text>
 			</g>
+			
+			<!-- 北海道 - 横向き -->
 			<g class="hokkaido prefecture" data-code="1">
-        <title>北海道 / Hokkaido</title>
-				<path d="M783.9,0c-4.4,0-8,3.6-8,8v185.3c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-25.6c0-6.6,5.4-12,12-12H992c4.4,0,8-3.6,8-8V8
-					c0-4.4-3.6-8-8-8H783.9z"/>
+				<title>北海道 / Hokkaido</title>
+				<path d="M783.9,0c-4.4,0-8,3.6-8,8v185.3c0,4.4,3.6,8,8,8h48.4c4.4,0,8-3.6,8-8v-25.6c0-6.6,5.4-12,12-12H992c4.4,0,8-3.6,8-8V8c0-4.4-3.6-8-8-8H783.9z" fill="white" stroke="#666" stroke-width="1"/>
+				<text x="891.9" y="80" font-family="Yomogi" font-size="24" fill="black" text-anchor="middle">北海道</text>
 			</g>
 		</g>
 		<g class="boundary-line" stroke="#EEEEEE" stroke-width="12" stroke-linejoin="round" style="">
-			<path d="M216.1,593.3H89.3c-1.1,0-2-0.9-2-2s0.9-2,2-2h126.9c4.4,0,8-3.6,8-8V454.4c0-1.1,0.9-2,2-2s2,0.9,2,2v126.9
-				C228.2,587.9,222.8,593.3,216.1,593.3z"/>
+			<path d="M216.1,593.3H89.3c-1.1,0-2-0.9-2-2s0.9-2,2-2h126.9c4.4,0,8-3.6,8-8V454.4c0-1.1,0.9-2,2-2s2,0.9,2,2v126.9C228.2,587.9,222.8,593.3,216.1,593.3z"/>
 		</g>
 	</g>
 </svg>

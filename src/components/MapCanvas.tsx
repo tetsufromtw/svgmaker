@@ -359,9 +359,31 @@ export default function MapCanvas() {
                 </div>
             ) : (
                 <div
-                    ref={containerRef}
+                    ref={(el) => {
+                        if (!el) return
+                        el.innerHTML = svgContent
+
+                        const svgEl = el.querySelector('svg')
+                        if (!svgEl) return
+
+                        svgEl.setAttribute('width', '100%')
+                        svgEl.setAttribute('height', '100%')
+                        svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet')
+                        if (!svgEl.hasAttribute('viewBox')) {
+                            svgEl.setAttribute('viewBox', '0 0 1000 1000') // 根據你的 SVG 調整
+                        }
+
+                        svgEl.querySelectorAll('text').forEach(textEl => {
+                            textEl.setAttribute('font-family', 'Yomogi, sans-serif')
+                            textEl.setAttribute('font-size', '24px')
+                            textEl.setAttribute('text-anchor', 'middle')
+                            textEl.setAttribute('dominant-baseline', 'central')
+                            textEl.setAttribute('paint-order', 'stroke')
+                            textEl.setAttribute('stroke-width', '0')
+                            textEl.setAttribute('stroke', 'none')
+                        })
+                    }}
                     className="w-full h-full flex items-center justify-center relative"
-                    dangerouslySetInnerHTML={{ __html: svgContent }}
                     style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -371,6 +393,7 @@ export default function MapCanvas() {
                     }}
                 />
             )}
+
         </div>
     )
 }
