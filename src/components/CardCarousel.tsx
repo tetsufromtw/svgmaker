@@ -55,7 +55,8 @@ export default function CardCarousel() {
     }
 
     return (
-        <div className="relative group">
+        // <div className="relative group">
+        <div className="relative group flex-1 flex flex-col h-full">
             {/* 左箭頭 */}
             <button
                 onClick={() => scroll('left')}

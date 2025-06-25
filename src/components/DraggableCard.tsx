@@ -4,7 +4,7 @@
 import { useState } from 'react'
 import { CardData } from '@/types/card.types'
 import { useCardContext } from '@/context/CardContext'
-import InfoCard from './InfoCard'
+import OutlineCard from './OutlineCard'
 
 interface DraggableCardProps {
     card: CardData
@@ -51,13 +51,12 @@ export default function DraggableCard({
             onDragEnd={handleDragEnd}
             onClick={handleClick}
             className={`
-        cursor-move transition-all duration-200 select-none
-        ${isDragging ? 'opacity-50' : ''}
-        ${isSelected ? 'scale-none ring-4 ring-blue-400 ring-offset-2 rounded-lg' : ''}
-        scale-100
-      `}
+                cursor-move transition-all duration-200 select-none
+                ${isDragging ? 'opacity-50' : ''}
+                ${isSelected ? 'ring-4 ring-blue-400 ring-offset-2 rounded-lg' : ''}
+            `}
         >
-            <InfoCard
+            <OutlineCard
                 config={card.config}
                 className={isSelected ? 'shadow-xl' : 'hover:shadow-lg'}
             />

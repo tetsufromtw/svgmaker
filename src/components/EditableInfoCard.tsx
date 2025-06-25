@@ -117,31 +117,35 @@ export default function EditableInfoCard() {
     }
 
     return (
-        <div className="bg-white rounded-lg shadow-lg p-4 w-full max-w-sm">
-            {/* 標題編輯 */}
-            <div className="mb-3">
-                <label className="block text-xs text-gray-500 mb-1">標題</label>
-                <input
-                    type="text"
-                    value={localConfig.title}
-                    onChange={(e) => handleTitleChange(e.target.value)}
-                    className="w-full px-2 py-1 text-lg font-bold border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                />
+        <div className="h-full flex flex-col bg-white rounded-lg shadow-lg overflow-y-auto">
+            {/* 固定的標題區 */}
+            <div className="p-4 pb-0">
+                {/* 標題編輯 */}
+                <div className="mb-3">
+                    <label className="block text-xs text-gray-500 mb-1">標題</label>
+                    <input
+                        type="text"
+                        value={localConfig.title}
+                        onChange={(e) => handleTitleChange(e.target.value)}
+                        className="w-full px-2 py-1 text-lg font-bold border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    />
+                </div>
+
+                {/* 副標題編輯 */}
+                <div className="mb-4">
+                    <label className="block text-xs text-gray-500 mb-1">副標題</label>
+                    <input
+                        type="text"
+                        value={localConfig.subtitle || ''}
+                        onChange={(e) => handleSubtitleChange(e.target.value)}
+                        className="w-full px-2 py-1 text-sm text-gray-600 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        placeholder="選填"
+                    />
+                </div>
             </div>
 
-            {/* 副標題編輯 */}
-            <div className="mb-4">
-                <label className="block text-xs text-gray-500 mb-1">副標題</label>
-                <input
-                    type="text"
-                    value={localConfig.subtitle || ''}
-                    onChange={(e) => handleSubtitleChange(e.target.value)}
-                    className="w-full px-2 py-1 text-sm text-gray-600 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="選填"
-                />
-            </div>
-
-            {/* 圖例編輯 */}
+            {/* 可滾動的圖例區 */}
+            {/* <div className="flex-1 px-4 pb-4 overflow-y-auto min-h-0"> */}
             <div className="space-y-2">
                 <label className="block text-xs text-gray-500 mb-1">圖例項目</label>
                 {localConfig.legendItems.map((item, index) => (
@@ -188,5 +192,6 @@ export default function EditableInfoCard() {
                 )}
             </div>
         </div>
+        // </div>
     )
 }
