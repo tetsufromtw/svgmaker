@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useCardContext } from '@/context/CardContext'
 import InfoCard from './InfoCard'
 import { useMapClick } from '@/hooks/useMapClick'
+import { useMapContext } from '@/context/MapContext'
 import html2canvas from 'html2canvas-pro'
 import { BsCameraReels } from "react-icons/bs"
 import { AiFillTikTok } from "react-icons/ai"
@@ -12,6 +13,7 @@ import { LuDownload, LuUpload } from "react-icons/lu";
 
 export default function MapCanvas() {
     const { activeCardConfig } = useCardContext()
+    const { showInfoCard, backgroundMode } = useMapContext()
     const [svgContent, setSvgContent] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [svgLoaded, setSvgLoaded] = useState<boolean>(false)
@@ -222,7 +224,16 @@ export default function MapCanvas() {
     }
 
     return (
-        <div ref={mapContainerRef} className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 h-full relative overflow-hidden">
+        <div
+            ref={mapContainerRef}
+            className={`rounded-lg shadow-sm border border-gray-200 p-8 h-full relative overflow-hidden ${backgroundMode === 'transparent' ? 'checkerboard-pattern' : ''
+                }`}
+            style={{
+                backgroundColor: backgroundMode === 'white' ? 'white' :
+                    backgroundMode === 'transparent' ? 'transparent' :
+                        '#f3f4f6'
+            }}
+        >
             {/* 加入晃動動畫的 CSS */}
             <style dangerouslySetInnerHTML={{
                 __html: `
@@ -241,7 +252,7 @@ export default function MapCanvas() {
             }} />
 
             {/* InfoCard 疊加在地圖上 - 現在可以拖動 */}
-            {activeCardConfig && (
+            {showInfoCard && activeCardConfig && (
                 <div
                     ref={infoCardRef}
                     className={`absolute z-10 ${isEditMode ? 'wiggle-animation' : ''}`}
@@ -261,7 +272,7 @@ export default function MapCanvas() {
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseUp} // 滑鼠離開時也要清除計時器
                 >
-                    <InfoCard config={activeCardConfig} enableColorPicker={true} />
+                    <InfoCard config={activeCardConfig} />
 
                     {/* iOS 風格的關閉按鈕 */}
                     {isEditMode && (

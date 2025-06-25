@@ -12,6 +12,13 @@ interface MapContextType {
     setSelectedColor: (color: string) => void
     selectedLevel: number | string
     setSelectedLevel: (level: number | string) => void
+    showInfoCard: boolean
+    setShowInfoCard: (show: boolean) => void
+    backgroundMode: 'white' | 'transparent' | 'crop'
+    setBackgroundMode: (mode: 'white' | 'transparent' | 'crop') => void
+    exportFormat: 'png' | 'jpg'
+    setExportFormat: (format: 'png' | 'jpg') => void
+
 }
 
 const MapContext = createContext<MapContextType | undefined>(undefined)
@@ -21,6 +28,9 @@ export function MapProvider({ children }: { children: ReactNode }) {
     const [prefectureColors, setPrefectureColors] = useState<Record<string, string>>({})
     const [selectedColor, setSelectedColor] = useState<string>('#ef4444') // 預設紅色
     const [selectedLevel, setSelectedLevel] = useState<number | string>(5) // 預設等級5
+    const [showInfoCard, setShowInfoCard] = useState<boolean>(true)
+    const [backgroundMode, setBackgroundMode] = useState<'white' | 'transparent' | 'crop'>('white')
+    const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png')
 
     const setPrefectureColor = (prefectureId: string, color: string) => {
         setPrefectureColors(prev => ({
@@ -45,7 +55,13 @@ export function MapProvider({ children }: { children: ReactNode }) {
                 selectedColor,
                 setSelectedColor,
                 selectedLevel,
-                setSelectedLevel
+                setSelectedLevel,
+                showInfoCard,
+                setShowInfoCard,
+                backgroundMode,
+                setBackgroundMode,
+                exportFormat,
+                setExportFormat
             }}
         >
             {children}

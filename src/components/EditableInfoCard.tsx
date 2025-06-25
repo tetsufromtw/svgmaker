@@ -1,197 +1,219 @@
 // src/components/EditableInfoCard.tsx
 'use client'
 
-import { useState, useEffect } from 'react'
-import { InfoCardConfig, LegendItem } from '@/types/card.types'
 import { useCardContext } from '@/context/CardContext'
-
-// 生成隨機顏色（確保顏色夠鮮明）
-function generateRandomColor(): string {
-    const hue = Math.floor(Math.random() * 360)
-    const saturation = 50 + Math.floor(Math.random() * 50) // 50-100%
-    const lightness = 40 + Math.floor(Math.random() * 30) // 40-70%
-    return `hsl(${hue}, ${saturation}%, ${lightness}%)`
-}
-
-// 轉換 HSL 到 HEX
-function hslToHex(hsl: string): string {
-    const match = hsl.match(/hsl\((\d+),\s*(\d+)%,\s*(\d+)%\)/)
-    if (!match) return '#808080'
-
-    const h = parseInt(match[1]) / 360
-    const s = parseInt(match[2]) / 100
-    const l = parseInt(match[3]) / 100
-
-    const hue2rgb = (p: number, q: number, t: number) => {
-        if (t < 0) t += 1
-        if (t > 1) t -= 1
-        if (t < 1 / 6) return p + (q - p) * 6 * t
-        if (t < 1 / 2) return q
-        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6
-        return p
-    }
-
-    const q = l < 0.5 ? l * (1 + s) : l + s - l * s
-    const p = 2 * l - q
-
-    const r = Math.round(hue2rgb(p, q, h + 1 / 3) * 255)
-    const g = Math.round(hue2rgb(p, q, h) * 255)
-    const b = Math.round(hue2rgb(p, q, h - 1 / 3) * 255)
-
-    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`
-}
+import { useState } from 'react'
 
 export default function EditableInfoCard() {
     const { activeCardConfig, updateActiveCardConfig } = useCardContext()
-    const [localConfig, setLocalConfig] = useState<InfoCardConfig | null>(null)
+    const [isEditingTitle, setIsEditingTitle] = useState(false)
+    const [isEditingSubtitle, setIsEditingSubtitle] = useState(false)
+    const [editingItemIndex, setEditingItemIndex] = useState<number | null>(null)
+    const [editingLevelIndex, setEditingLevelIndex] = useState<number | null>(null)
 
-    useEffect(() => {
-        setLocalConfig(activeCardConfig)
-    }, [activeCardConfig])
-
-    if (!localConfig) {
+    if (!activeCardConfig) {
         return (
-            <div className="h-full flex items-center justify-center text-gray-400">
-                請選擇一個卡片來編輯
+            <div className="text-center text-gray-400 py-8">
+                <p>請先選擇一張卡片</p>
             </div>
         )
     }
 
     const handleTitleChange = (value: string) => {
-        const newConfig = { ...localConfig, title: value }
-        setLocalConfig(newConfig)
-        updateActiveCardConfig(newConfig)
+        updateActiveCardConfig({
+            ...activeCardConfig,
+            title: value
+        })
     }
 
     const handleSubtitleChange = (value: string) => {
-        const newConfig = { ...localConfig, subtitle: value }
-        setLocalConfig(newConfig)
-        updateActiveCardConfig(newConfig)
+        updateActiveCardConfig({
+            ...activeCardConfig,
+            subtitle: value
+        })
     }
 
-    const handleLegendLabelChange = (index: number, value: string) => {
-        const newConfig = {
-            ...localConfig,
-            legendItems: localConfig.legendItems.map((item, i) =>
-                i === index ? { ...item, label: value } : item
-            )
+    const handleLegendItemChange = (index: number, field: 'label' | 'level' | 'description', value: string | number) => {
+        const newLegendItems = [...activeCardConfig.legendItems]
+        newLegendItems[index] = {
+            ...newLegendItems[index],
+            [field]: value
         }
-        setLocalConfig(newConfig)
-        updateActiveCardConfig(newConfig)
+        updateActiveCardConfig({
+            ...activeCardConfig,
+            legendItems: newLegendItems
+        })
     }
 
-    const handleDeleteItem = (index: number) => {
-        // 至少保留一個項目
-        if (localConfig.legendItems.length <= 1) return
-
-        const newConfig = {
-            ...localConfig,
-            legendItems: localConfig.legendItems.filter((_, i) => i !== index)
-        }
-        setLocalConfig(newConfig)
-        updateActiveCardConfig(newConfig)
+    const handleRemoveLegendItem = (index: number) => {
+        const newLegendItems = activeCardConfig.legendItems.filter((_, i) => i !== index)
+        updateActiveCardConfig({
+            ...activeCardConfig,
+            legendItems: newLegendItems
+        })
     }
 
-    const handleAddItem = () => {
-        // 最多6個項目
-        if (localConfig.legendItems.length >= 6) return
-
-        // 生成新項目
-        const newLevel = localConfig.legendItems.length > 0
-            ? Math.max(0, (localConfig.legendItems[localConfig.legendItems.length - 1].level as number || 0) - 1)
-            : 0
-
-        const newItem: LegendItem = {
-            label: '新項目',
-            color: hslToHex(generateRandomColor()),
-            level: newLevel,
-            description: ''
+    const toggleLevelVisibility = (index: number) => {
+        const newLegendItems = [...activeCardConfig.legendItems]
+        newLegendItems[index] = {
+            ...newLegendItems[index],
+            hideLevel: !newLegendItems[index].hideLevel
         }
-
-        const newConfig = {
-            ...localConfig,
-            legendItems: [...localConfig.legendItems, newItem]
-        }
-        setLocalConfig(newConfig)
-        updateActiveCardConfig(newConfig)
+        updateActiveCardConfig({
+            ...activeCardConfig,
+            legendItems: newLegendItems
+        })
     }
 
     return (
-        <div className="h-full flex flex-col bg-white rounded-lg shadow-lg overflow-y-auto">
-            {/* 固定的標題區 */}
-            <div className="p-4 pb-0">
-                {/* 標題編輯 */}
-                <div className="mb-3">
-                    <label className="block text-xs text-gray-500 mb-1">標題</label>
-                    <input
-                        type="text"
-                        value={localConfig.title}
-                        onChange={(e) => handleTitleChange(e.target.value)}
-                        className="w-full px-2 py-1 text-lg font-bold border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    />
-                </div>
+        <div className="h-full flex flex-col overflow-hidden">
+            {/* 卡片預覽區 */}
+            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
+                <div className="max-w-sm mx-auto">
+                    {/* 標題編輯 */}
+                    <div className="mb-2">
+                        {isEditingTitle ? (
+                            <input
+                                type="text"
+                                value={activeCardConfig.title}
+                                onChange={(e) => handleTitleChange(e.target.value)}
+                                onBlur={() => setIsEditingTitle(false)}
+                                onKeyDown={(e) => e.key === 'Enter' && setIsEditingTitle(false)}
+                                className="w-full text-lg font-bold px-2 py-1 border border-blue-400 rounded"
+                                autoFocus
+                            />
+                        ) : (
+                            <h3
+                                className="text-lg font-bold cursor-pointer hover:bg-gray-100 px-2 py-1 rounded"
+                                onClick={() => setIsEditingTitle(true)}
+                            >
+                                {activeCardConfig.title}
+                            </h3>
+                        )}
+                    </div>
 
-                {/* 副標題編輯 */}
-                <div className="mb-4">
-                    <label className="block text-xs text-gray-500 mb-1">副標題</label>
-                    <input
-                        type="text"
-                        value={localConfig.subtitle || ''}
-                        onChange={(e) => handleSubtitleChange(e.target.value)}
-                        className="w-full px-2 py-1 text-sm text-gray-600 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        placeholder="選填"
-                    />
+                    {/* 副標題編輯 */}
+                    <div className="mb-4">
+                        {isEditingSubtitle ? (
+                            <input
+                                type="text"
+                                value={activeCardConfig.subtitle}
+                                onChange={(e) => handleSubtitleChange(e.target.value)}
+                                onBlur={() => setIsEditingSubtitle(false)}
+                                onKeyDown={(e) => e.key === 'Enter' && setIsEditingSubtitle(false)}
+                                className="w-full text-sm text-gray-600 px-2 py-1 border border-blue-400 rounded"
+                                autoFocus
+                            />
+                        ) : (
+                            <p
+                                className="text-sm text-gray-600 cursor-pointer hover:bg-gray-100 px-2 py-1 rounded"
+                                onClick={() => setIsEditingSubtitle(true)}
+                            >
+                                {activeCardConfig.subtitle}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* 圖例項目列表 */}
+                    <div className="space-y-1">
+                        {activeCardConfig.legendItems.map((item, index) => (
+                            <div
+                                key={index}
+                                className="group flex items-center gap-2 rounded-lg p-2 hover:bg-gray-50"
+                            >
+                                {/* 移除按鈕 */}
+                                <button
+                                    onClick={() => handleRemoveLegendItem(index)}
+                                    className="rounded p-1 text-red-500 hover:bg-red-50 flex-shrink-0"
+                                    title="移除此項目"
+                                >
+                                    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4"></path>
+                                    </svg>
+                                </button>
+
+                                {/* 色塊 */}
+                                <div
+                                    className="h-6 w-6 rounded flex-shrink-0"
+                                    style={{ backgroundColor: item.color }}
+                                />
+
+                                {/* 標籤名稱 */}
+                                {editingItemIndex === index ? (
+                                    <input
+                                        type="text"
+                                        value={item.label}
+                                        onChange={(e) => handleLegendItemChange(index, 'label', e.target.value)}
+                                        onBlur={() => setEditingItemIndex(null)}
+                                        onKeyDown={(e) => e.key === 'Enter' && setEditingItemIndex(null)}
+                                        className="flex-[3] text-sm px-2 py-1 border border-blue-400 rounded"
+                                        autoFocus
+                                    />
+                                ) : (
+                                    <span
+                                        className="flex-[3] text-sm cursor-pointer hover:bg-gray-100 px-1 rounded"
+                                        onClick={() => setEditingItemIndex(index)}
+                                    >
+                                        {item.label}
+                                    </span>
+                                )}
+
+                                {/* 等級/分數 */}
+                                {!item.hideLevel && (
+                                    editingLevelIndex === index ? (
+                                        <input
+                                            type="text"
+                                            value={item.level}
+                                            onChange={(e) => handleLegendItemChange(index, 'level', e.target.value)}
+                                            onBlur={() => setEditingLevelIndex(null)}
+                                            onKeyDown={(e) => e.key === 'Enter' && setEditingLevelIndex(null)}
+                                            className="flex-[1] text-sm text-gray-500 px-2 py-1 border border-blue-400 rounded"
+                                            autoFocus
+                                        />
+                                    ) : (
+                                        <span
+                                            className="flex-[1] text-sm text-gray-500 cursor-pointer hover:bg-gray-100 px-1 rounded"
+                                            onClick={() => setEditingLevelIndex(index)}
+                                        >
+                                            {typeof item.level === 'number' ? `等級 ${item.level}` : item.level}
+                                        </span>
+                                    )
+                                )}
+
+                                {/* 操作按鈕 - hover 時顯示 */}
+                                <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button
+                                        onClick={() => toggleLevelVisibility(index)}
+                                        className="rounded p-1 hover:bg-gray-200"
+                                        title={item.hideLevel ? "顯示等級" : "隱藏等級"}
+                                    >
+                                        <svg className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            {item.hideLevel ? (
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                            ) : (
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                                            )}
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            {/* 可滾動的圖例區 */}
-            {/* <div className="flex-1 px-4 pb-4 overflow-y-auto min-h-0"> */}
-            <div className="space-y-2">
-                <label className="block text-xs text-gray-500 mb-1">圖例項目</label>
-                {localConfig.legendItems.map((item, index) => (
-                    <div key={index} className="grid grid-cols-[auto_auto_1fr_auto] items-center gap-2">
-                        {/* 刪除按鈕 */}
-                        <button
-                            onClick={() => handleDeleteItem(index)}
-                            className="w-6 h-6 flex items-center justify-center text-red-500 hover:bg-red-50 rounded transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
-                            disabled={localConfig.legendItems.length <= 1}
-                            title={localConfig.legendItems.length <= 1 ? "至少需要保留一個項目" : "刪除此項目"}
-                        >
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
-                            </svg>
-                        </button>
-
-                        <div
-                            className="w-4 h-4 rounded flex-shrink-0"
-                            style={{ backgroundColor: item.color }}
-                        />
-                        <input
-                            type="text"
-                            value={item.label}
-                            onChange={(e) => handleLegendLabelChange(index, e.target.value)}
-                            className="flex-1 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
-                        />
-                        <span className="text-sm text-gray-600 flex-shrink-0">
-                            {typeof item.level === 'number' ? `等級：${item.level}` : item.level}
-                        </span>
-                    </div>
-                ))}
-
-                {/* 新增按鈕 */}
-                {localConfig.legendItems.length < 6 && (
-                    <button
-                        onClick={handleAddItem}
-                        className="w-full py-2 flex items-center justify-center gap-2 text-blue-600 hover:bg-blue-50 rounded border border-dashed border-blue-300 transition-colors"
-                    >
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                        <span className="text-sm">新增項目</span>
-                    </button>
-                )}
+            {/* 編輯提示 */}
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-700">
+                <p className="font-semibold mb-1">編輯提示：</p>
+                <ul className="space-y-1 text-xs">
+                    <li>• 點擊文字可直接編輯</li>
+                    <li>• 標籤名稱和等級可分別編輯</li>
+                    <li>• 點擊眼睛圖示可隱藏等級顯示</li>
+                    <li>• 點擊減號可移除整個項目</li>
+                </ul>
             </div>
         </div>
-        // </div>
     )
 }
