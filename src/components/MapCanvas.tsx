@@ -8,6 +8,7 @@ import html2canvas from 'html2canvas-pro'
 import { BsCameraReels } from "react-icons/bs"
 import { AiFillTikTok } from "react-icons/ai"
 import { SiYoutubeshorts } from "react-icons/si"
+import { LuDownload, LuUpload } from "react-icons/lu";
 
 export default function MapCanvas() {
     const { activeCardConfig } = useCardContext()
@@ -280,6 +281,16 @@ export default function MapCanvas() {
                     )}
                 </div>
             )}
+            {/*upload background image*/}
+            <div className="absolute bottom-4 right-64 z-10">
+                <button
+
+                    className="bg-white hover:bg-gray-50 text-gray-700 p-2.5 rounded-full shadow-lg transition-all hover:shadow-xl"
+                    title="上傳背景圖片"
+                >
+                    <LuUpload className="w-5 h-5" />
+                </button>
+            </div>
 
             {/* 下載按鈕群組 */}
             <div className="absolute bottom-4 right-4 z-10">
@@ -289,9 +300,7 @@ export default function MapCanvas() {
                     className="bg-white hover:bg-gray-50 text-gray-700 p-3 rounded-full shadow-lg transition-all hover:shadow-xl"
                     title="下載地圖"
                 >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                    </svg>
+                    <LuDownload className="w-5 h-5" />
                 </button>
 
                 {/* 扇形展開的選項 */}
@@ -350,9 +359,33 @@ export default function MapCanvas() {
                 </div>
             ) : (
                 <div
-                    ref={containerRef}
+                    ref={(el) => {
+                        if (!el) return
+                        containerRef.current = el
+                        if (el.querySelector('svg')) return
+                        el.innerHTML = svgContent
+
+                        const svgEl = el.querySelector('svg')
+                        if (!svgEl) return
+
+                        svgEl.setAttribute('width', '100%')
+                        svgEl.setAttribute('height', '100%')
+                        svgEl.setAttribute('preserveAspectRatio', 'xMidYMid meet')
+                        if (!svgEl.hasAttribute('viewBox')) {
+                            svgEl.setAttribute('viewBox', '0 0 1000 1000') // 根據你的 SVG 調整
+                        }
+
+                        svgEl.querySelectorAll('text').forEach(textEl => {
+                            textEl.setAttribute('font-family', 'Yomogi, sans-serif')
+                            textEl.setAttribute('font-size', '24px')
+                            textEl.setAttribute('text-anchor', 'middle')
+                            textEl.setAttribute('dominant-baseline', 'central')
+                            textEl.setAttribute('paint-order', 'stroke')
+                            textEl.setAttribute('stroke-width', '0')
+                            textEl.setAttribute('stroke', 'none')
+                        })
+                    }}
                     className="w-full h-full flex items-center justify-center relative"
-                    dangerouslySetInnerHTML={{ __html: svgContent }}
                     style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -362,6 +395,7 @@ export default function MapCanvas() {
                     }}
                 />
             )}
+
         </div>
     )
 }

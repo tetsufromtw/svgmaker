@@ -5,7 +5,7 @@ import EditableInfoCard from './EditableInfoCard'
 
 export default function CardDisplay() {
     return (
-        <div className="h-full flex items-center justify-center">
+        <div className="h-full overflow-hidden">
             <EditableInfoCard />
         </div>
     )

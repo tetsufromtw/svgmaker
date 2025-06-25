@@ -21,7 +21,7 @@ export default function InfoCard({ config, className = '', enableColorPicker = f
     }
 
     return (
-        <div className={`bg-white rounded-lg shadow-lg p-4 w-80 ${className}`}>
+        <div className={`bg-white rounded-lg shadow-lg p-4 w-80 max-h-full overflow-hidden ${className}`}>
             {/* 標題 */}
             <h2 className="text-xl font-bold mb-3">{config.title}</h2>
             {config.subtitle && (

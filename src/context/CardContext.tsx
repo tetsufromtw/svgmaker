@@ -13,13 +13,14 @@ const defaultCards: CardData[] = [
             title: '制縣等級',
             subtitle: '顯示您在日本各都道府縣的旅遊經歷等級',
             legendItems: [
-                { label: '住居（居住過）', color: '#ef4444', level: 5, description: '' },
-                { label: '宿泊（住宿過）', color: '#f97316', level: 4, description: '' },
-                { label: '訪問（遊玩過）', color: '#eab308', level: 3, description: '' },
-                { label: '接地（休息、換車等）', color: '#22c55e', level: 2, description: '' },
-                { label: '通過（路過）', color: '#3b82f6', level: 1, description: '' },
-                { label: '未到訪', color: '#d1d5db', level: 0, description: '' }
+                { label: '住居（居住過）', color: '#fca5a5', level: 5, description: '' },     // red-300
+                { label: '宿泊（住宿過）', color: '#fdba74', level: 4, description: '' },     // orange-300
+                { label: '訪問（遊玩過）', color: '#fde68a', level: 3, description: '' },     // yellow-300
+                { label: '接地（休息、換車等）', color: '#86efac', level: 2, description: '' }, // green-300
+                { label: '通過（路過）', color: '#93c5fd', level: 1, description: '' },       // blue-300
+                { label: '未到訪', color: '#e5e7eb', level: 0, description: '' }              // gray-200
             ]
+
         }
     },
     {
@@ -29,12 +30,13 @@ const defaultCards: CardData[] = [
             title: '安全指數',
             subtitle: '各都道府縣的安全評級',
             legendItems: [
-                { label: '非常安全', color: '#22c55e', level: '90-100', description: '' },
-                { label: '安全', color: '#84cc16', level: '75-89', description: '' },
-                { label: '普通', color: '#eab308', level: '60-74', description: '' },
-                { label: '需注意', color: '#f97316', level: '45-59', description: '' },
-                { label: '危險', color: '#ef4444', level: '0-44', description: '' }
+                { label: '非常安全', color: '#6ee7b7', level: '90-100', description: '' },     // emerald-300
+                { label: '安全', color: '#a7f3d0', level: '75-89', description: '' },          // green-200
+                { label: '普通', color: '#fde68a', level: '60-74', description: '' },          // yellow-300
+                { label: '需注意', color: '#fdba74', level: '45-59', description: '' },        // orange-300
+                { label: '危險', color: '#fca5a5', level: '0-44', description: '' }            // red-300
             ]
+
         }
     },
     {
@@ -44,12 +46,14 @@ const defaultCards: CardData[] = [
             title: '人口密度',
             subtitle: '每平方公里人口數',
             legendItems: [
-                { label: '極高密度', color: '#7c3aed', level: '>1000', description: '' },
-                { label: '高密度', color: '#a855f7', level: '500-1000', description: '' },
-                { label: '中密度', color: '#c084fc', level: '200-500', description: '' },
-                { label: '低密度', color: '#e9d5ff', level: '50-200', description: '' },
-                { label: '極低密度', color: '#f3e8ff', level: '<50', description: '' }
+                { label: '類別 A', color: '#7dd3fc', level: '等級 5', description: '' },      // sky-300
+                { label: '類別 B', color: '#93c5fd', level: '等級 4', description: '' },      // blue-300
+                { label: '類別 C', color: '#a5b4fc', level: '等級 3', description: '' },      // indigo-300
+                { label: '類別 D', color: '#c4b5fd', level: '等級 2', description: '' },      // violet-300
+                { label: '類別 E', color: '#d8b4fe', level: '等級 1', description: '' }       // purple-300
             ]
+
+
         }
     },
     {
