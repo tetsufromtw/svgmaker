@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useMapContext } from '@/context/MapContext'
 
 const tabs = [
     { id: 'japan', label: '日本 🗾', available: true },
@@ -10,7 +10,7 @@ const tabs = [
 ]
 
 export default function MapTabs() {
-    const [activeTab, setActiveTab] = useState('japan')
+    const { activeTab, setActiveTab } = useMapContext()
 
     return (
         <div className="flex items-end mb-0">

@@ -6,6 +6,8 @@ import React, { createContext, useContext, useState, ReactNode } from 'react'
 interface MapContextType {
     currentMap: string
     setCurrentMap: (map: string) => void
+    activeTab: string
+    setActiveTab: (tab: string) => void
     prefectureColors: Record<string, string>
     setPrefectureColor: (prefectureId: string, color: string) => void
     selectedColor: string
@@ -25,6 +27,7 @@ const MapContext = createContext<MapContextType | undefined>(undefined)
 
 export function MapProvider({ children }: { children: ReactNode }) {
     const [currentMap, setCurrentMap] = useState('japan')
+    const [activeTab, setActiveTab] = useState('japan')
     const [prefectureColors, setPrefectureColors] = useState<Record<string, string>>({})
     const [selectedColor, setSelectedColor] = useState<string>('#ef4444') // 預設紅色
     const [selectedLevel, setSelectedLevel] = useState<number | string>(5) // 預設等級5
@@ -50,6 +53,8 @@ export function MapProvider({ children }: { children: ReactNode }) {
             value={{
                 currentMap,
                 setCurrentMap,
+                activeTab,
+                setActiveTab,
                 prefectureColors,
                 setPrefectureColor,
                 selectedColor,

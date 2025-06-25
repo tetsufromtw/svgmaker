@@ -1,18 +1,21 @@
 // src/app/page.tsx
+'use client'
+
 import MapTabs from '@/components/MapTabs'
 import MapCanvas from '@/components/MapCanvas'
+import ProfileCard from '@/components/ProfileCard'
 import DataSelector from '@/components/DataSelector'
 import AdSpace from '@/components/AdSpace'
 import LeftPanel from '@/components/LeftPanel'
 import ControlPanel from '@/components/ControlPanel'
 import { MapProvider } from '@/context/MapContext'
 import { CardProvider } from '@/context/CardContext'
+import { useMapContext } from '@/context/MapContext'
 
-export default function Home() {
+function HomeContent() {
+  const { activeTab } = useMapContext()
+
   return (
-    <>
-      <MapProvider>
-        <CardProvider>
           <div className="h-screen bg-gray-50 flex flex-col">
             {/* 手機版頂部廣告 */}
             <AdSpace position="top" />
@@ -40,7 +43,7 @@ export default function Home() {
 
                     {/* 地圖畫布 */}
                     <div className="flex-1 min-h-0">
-                      <MapCanvas />
+                      {activeTab === 'profile' ? <ProfileCard /> : <MapCanvas />}
                     </div>
                   </div>
 
@@ -68,6 +71,15 @@ export default function Home() {
               </svg>
             </button>
           </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <>
+      <MapProvider>
+        <CardProvider>
+          <HomeContent />
 
           {/* SEO 內容區塊 - 隱藏但可被搜尋引擎讀取 */}
           <div className="sr-only">
