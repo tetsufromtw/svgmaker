@@ -6,6 +6,7 @@ const tabs = [
     { id: 'japan', label: '日本 🗾', available: true },
     { id: 'taiwan', label: '台灣 🏝️', available: false },
     { id: 'usa', label: '美國 🗽', available: false },
+    { id: 'profile', label: 'Introduce 👤', available: true },
 ]
 
 export default function MapTabs() {

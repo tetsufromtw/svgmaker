@@ -13,7 +13,7 @@ import { LuDownload, LuUpload } from "react-icons/lu";
 
 export default function MapCanvas() {
     const { activeCardConfig } = useCardContext()
-    const { showInfoCard, backgroundMode } = useMapContext()
+    const { showInfoCard, backgroundMode, exportFormat } = useMapContext()
     const [svgContent, setSvgContent] = useState<string>('')
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const [svgLoaded, setSvgLoaded] = useState<boolean>(false)
@@ -187,6 +187,42 @@ export default function MapCanvas() {
     }
 
     // 下載功能
+    // const handleDownload = async (platform: 'tiktok' | 'reels' | 'shorts') => {
+    //     if (!mapContainerRef.current) return
+
+    //     // 關閉選單
+    //     setShowDownloadMenu(false)
+
+    //     try {
+    //         // 動態引入 html2canvas
+    //         const html2canvas = (await import('html2canvas-pro')).default
+
+    //         // 設定 html2canvas 選項
+    //         const canvas = await html2canvas(mapContainerRef.current, {
+    //             backgroundColor: '#ffffff',
+    //             scale: 2, // 提高解析度
+    //             logging: false,
+    //             useCORS: true,
+    //             allowTaint: true
+    //         })
+
+    //         // 轉換為 JPG 並下載
+    //         canvas.toBlob((blob) => {
+    //             if (blob) {
+    //                 const url = URL.createObjectURL(blob)
+    //                 const link = document.createElement('a')
+    //                 link.download = `map-${platform}-${new Date().getTime()}.jpg`
+    //                 link.href = url
+    //                 link.click()
+    //                 URL.revokeObjectURL(url)
+    //             }
+    //         }, 'image/jpeg', 0.95)
+    //     } catch (error) {
+    //         console.error('下載失敗:', error)
+    //         alert('下載失敗，請稍後再試')
+    //     }
+    // }
+    // 下載功能
     const handleDownload = async (platform: 'tiktok' | 'reels' | 'shorts') => {
         if (!mapContainerRef.current) return
 
@@ -197,26 +233,109 @@ export default function MapCanvas() {
             // 動態引入 html2canvas
             const html2canvas = (await import('html2canvas-pro')).default
 
-            // 設定 html2canvas 選項
-            const canvas = await html2canvas(mapContainerRef.current, {
-                backgroundColor: '#ffffff',
-                scale: 2, // 提高解析度
-                logging: false,
-                useCORS: true,
-                allowTaint: true
-            })
-
-            // 轉換為 JPG 並下載
-            canvas.toBlob((blob) => {
-                if (blob) {
-                    const url = URL.createObjectURL(blob)
-                    const link = document.createElement('a')
-                    link.download = `map-${platform}-${new Date().getTime()}.jpg`
-                    link.href = url
-                    link.click()
-                    URL.revokeObjectURL(url)
+            // 如果是智能裁切模式
+            if (backgroundMode === 'crop') {
+                // 找到 SVG 元素
+                const svg = mapContainerRef.current.querySelector('svg')
+                if (!svg) {
+                    alert('找不到地圖')
+                    return
                 }
-            }, 'image/jpeg', 0.95)
+
+                // 獲取 SVG 的實際邊界
+                const bbox = svg.getBBox()
+                const svgRect = svg.getBoundingClientRect()
+                const containerRect = mapContainerRef.current.getBoundingClientRect()
+
+                // 計算縮放比例
+                const scaleX = svgRect.width / bbox.width
+                const scaleY = svgRect.height / bbox.height
+
+                // 計算裁切區域（加上一些邊距）
+                const padding = 20
+                const cropX = Math.max(0, (bbox.x * scaleX) - padding)
+                const cropY = Math.max(0, (bbox.y * scaleY) - padding)
+                const cropWidth = (bbox.width * scaleX) + (padding * 2)
+                const cropHeight = (bbox.height * scaleY) + (padding * 2)
+
+                // 創建臨時容器
+                const tempContainer = document.createElement('div')
+                tempContainer.style.position = 'fixed'
+                tempContainer.style.left = '-9999px'
+                tempContainer.style.width = containerRect.width + 'px'
+                tempContainer.style.height = containerRect.height + 'px'
+                document.body.appendChild(tempContainer)
+
+                // 克隆內容
+                const clonedContent = mapContainerRef.current.cloneNode(true) as HTMLElement
+                tempContainer.appendChild(clonedContent)
+
+                // 截圖
+                const fullCanvas = await html2canvas(clonedContent, {
+                    backgroundColor: '#ffffff',
+                    scale: 2,
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true
+                })
+
+                // 創建裁切後的 canvas
+                const croppedCanvas = document.createElement('canvas')
+                const ctx = croppedCanvas.getContext('2d')!
+
+                croppedCanvas.width = cropWidth * 2
+                croppedCanvas.height = cropHeight * 2
+
+                // 裁切並繪製
+                ctx.drawImage(
+                    fullCanvas,
+                    cropX * 2, cropY * 2, cropWidth * 2, cropHeight * 2,
+                    0, 0, cropWidth * 2, cropHeight * 2
+                )
+
+                // 清理
+                document.body.removeChild(tempContainer)
+
+                // 匯出
+                const mimeType = exportFormat === 'png' ? 'image/png' : 'image/jpeg'
+                const quality = exportFormat === 'jpg' ? 0.95 : undefined
+
+                croppedCanvas.toBlob((blob) => {
+                    if (blob) {
+                        const url = URL.createObjectURL(blob)
+                        const link = document.createElement('a')
+                        link.download = `map-${platform}-${new Date().getTime()}.${exportFormat}`
+                        link.href = url
+                        link.click()
+                        URL.revokeObjectURL(url)
+                    }
+                }, mimeType, quality)
+
+            } else {
+                // 一般匯出（白色或透明背景）
+                const canvas = await html2canvas(mapContainerRef.current, {
+                    backgroundColor: backgroundMode === 'transparent' ? null : '#ffffff',
+                    scale: 2,
+                    logging: false,
+                    useCORS: true,
+                    allowTaint: true
+                })
+
+                // 根據格式匯出
+                const mimeType = exportFormat === 'png' ? 'image/png' : 'image/jpeg'
+                const quality = exportFormat === 'jpg' ? 0.95 : undefined
+
+                canvas.toBlob((blob) => {
+                    if (blob) {
+                        const url = URL.createObjectURL(blob)
+                        const link = document.createElement('a')
+                        link.download = `map-${platform}-${new Date().getTime()}.${exportFormat}`
+                        link.href = url
+                        link.click()
+                        URL.revokeObjectURL(url)
+                    }
+                }, mimeType, quality)
+            }
         } catch (error) {
             console.error('下載失敗:', error)
             alert('下載失敗，請稍後再試')
