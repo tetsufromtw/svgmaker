@@ -2,7 +2,8 @@
 'use client'
 
 import { useCardContext } from '@/context/CardContext'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import ColorPicker from './ColorPicker'
 
 export default function EditableInfoCard() {
     const { activeCardConfig, updateActiveCardConfig } = useCardContext()
@@ -10,6 +11,10 @@ export default function EditableInfoCard() {
     const [isEditingSubtitle, setIsEditingSubtitle] = useState(false)
     const [editingItemIndex, setEditingItemIndex] = useState<number | null>(null)
     const [editingLevelIndex, setEditingLevelIndex] = useState<number | null>(null)
+    const [showColorPicker, setShowColorPicker] = useState(false)
+    const [editingColorIndex, setEditingColorIndex] = useState<number | null>(null)
+    const [colorPickerPosition, setColorPickerPosition] = useState({ x: 0, y: 0 })
+    const colorButtonRefs = useRef<(HTMLDivElement | null)[]>([])
 
     if (!activeCardConfig) {
         return (
@@ -63,6 +68,37 @@ export default function EditableInfoCard() {
             ...activeCardConfig,
             legendItems: newLegendItems
         })
+    }
+
+    const handleColorClick = (index: number, event: React.MouseEvent) => {
+        const rect = (event.target as HTMLElement).getBoundingClientRect()
+        setColorPickerPosition({
+            x: rect.left,
+            y: rect.top
+        })
+        setEditingColorIndex(index)
+        setShowColorPicker(true)
+    }
+
+    const handleColorSelect = (color: string) => {
+        if (editingColorIndex !== null) {
+            const newLegendItems = [...activeCardConfig.legendItems]
+            newLegendItems[editingColorIndex] = {
+                ...newLegendItems[editingColorIndex],
+                color: color
+            }
+            updateActiveCardConfig({
+                ...activeCardConfig,
+                legendItems: newLegendItems
+            })
+        }
+        setShowColorPicker(false)
+        setEditingColorIndex(null)
+    }
+
+    const handleColorPickerClose = () => {
+        setShowColorPicker(false)
+        setEditingColorIndex(null)
     }
 
     return (
@@ -134,8 +170,11 @@ export default function EditableInfoCard() {
 
                                 {/* 色塊 */}
                                 <div
-                                    className="h-6 w-6 rounded flex-shrink-0"
+                                    ref={el => colorButtonRefs.current[index] = el}
+                                    className="h-6 w-6 rounded flex-shrink-0 cursor-pointer border-2 border-transparent hover:border-blue-300 hover:scale-110 transition-all duration-200"
                                     style={{ backgroundColor: item.color }}
+                                    onClick={(e) => handleColorClick(index, e)}
+                                    title="點擊更改顏色"
                                 />
 
                                 {/* 標籤名稱 */}
@@ -209,11 +248,22 @@ export default function EditableInfoCard() {
                 <p className="font-semibold mb-1">編輯提示：</p>
                 <ul className="space-y-1 text-xs">
                     <li>• 點擊文字可直接編輯</li>
+                    <li>• 點擊色塊可更改顏色</li>
                     <li>• 標籤名稱和等級可分別編輯</li>
                     <li>• 點擊眼睛圖示可隱藏等級顯示</li>
                     <li>• 點擊減號可移除整個項目</li>
                 </ul>
             </div>
+
+            {/* 調色盤 */}
+            {showColorPicker && editingColorIndex !== null && (
+                <ColorPicker
+                    currentColor={activeCardConfig.legendItems[editingColorIndex].color}
+                    onColorSelect={handleColorSelect}
+                    onClose={handleColorPickerClose}
+                    position={colorPickerPosition}
+                />
+            )}
         </div>
     )
 }
