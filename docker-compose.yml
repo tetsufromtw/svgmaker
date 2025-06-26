@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # Development service
+  svgmaker-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+    env_file:
+      - .env.local
+    command: npm run dev
+    stdin_open: true
+    tty: true
+    networks:
+      - svgmaker-network
+
+  # Production service
+  svgmaker-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    env_file:
+      - .env.production
+    networks:
+      - svgmaker-network
+    profiles:
+      - production
+
+  # Nginx reverse proxy (optional)
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - svgmaker-prod
+    networks:
+      - svgmaker-network
+    profiles:
+      - production
+      - nginx
+
+networks:
+  svgmaker-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+  next_cache:
