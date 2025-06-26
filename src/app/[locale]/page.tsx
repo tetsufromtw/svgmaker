@@ -1,4 +1,4 @@
-// src/app/page.tsx
+// src/app/[locale]/page.tsx
 'use client'
 
 import MapTabs from '@/components/MapTabs'
@@ -8,12 +8,15 @@ import DataSelector from '@/components/DataSelector'
 import AdSpace from '@/components/AdSpace'
 import LeftPanel from '@/components/LeftPanel'
 import ControlPanel from '@/components/ControlPanel'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { MapProvider } from '@/context/MapContext'
 import { CardProvider } from '@/context/CardContext'
 import { useMapContext } from '@/context/MapContext'
+import { useTranslations } from 'next-intl'
 
 function HomeContent() {
   const { activeTab } = useMapContext()
+  const t = useTranslations('homepage')
 
   return (
           <div className="h-screen bg-gray-50 flex flex-col">
@@ -49,7 +52,12 @@ function HomeContent() {
 
                   {/* 右側控制面板 */}
                   <div className="hidden md:block md:w-1/4 lg:w-1/5">
-                    <ControlPanel />
+                    <div className="space-y-4">
+                      <div className="flex justify-end">
+                        <LanguageSwitcher />
+                      </div>
+                      <ControlPanel />
+                    </div>
                   </div>
                 </div>
 
@@ -75,6 +83,8 @@ function HomeContent() {
 }
 
 export default function Home() {
+  const t = useTranslations('homepage')
+  
   return (
     <>
       <MapProvider>
@@ -83,9 +93,9 @@ export default function Home() {
 
           {/* SEO 內容區塊 - 隱藏但可被搜尋引擎讀取 */}
           <div className="sr-only">
-            <h1>日本地圖標記工具 - 自訂主題地圖製作器</h1>
+            <h1>{t('title')} - {t('subtitle')}</h1>
             <p>
-              免費的日本地圖標記工具，支援47都道府縣的自訂顏色標記。
+              {t('description')}，支援47都道府縣的自訂顏色標記。
               可用於旅遊規劃、數據視覺化、區域評分、災害分析等多種用途。
             </p>
 

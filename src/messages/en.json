@@ -1,0 +1,130 @@
+{
+  "homepage": {
+    "title": "Japan Map Marker Tool",
+    "subtitle": "Create Your Custom Theme Map",
+    "description": "Free map marking tool with custom colors and export functionality"
+  },
+  "mapTabs": {
+    "japan": "Japan 🗾",
+    "taiwan": "Taiwan 🏔️",
+    "usa": "USA 🗽",
+    "introduce": "Introduce 👤"
+  },
+  "leftPanel": {
+    "title": "Card Editor",
+    "description": "Edit selected information card content"
+  },
+  "controlPanel": {
+    "title": "Export Settings",
+    "description": "Adjust map export options",
+    "sections": {
+      "display": "Display Options",
+      "background": "Background Mode",
+      "format": "Export Format",
+      "preview": "Current Settings Preview"
+    },
+    "options": {
+      "showInfoCard": "Show Info Card",
+      "backgroundWhite": "White Background",
+      "backgroundWhiteDesc": "Standard white background",
+      "backgroundTransparent": "Transparent Background",
+      "backgroundTransparentDesc": "Suitable for overlay use",
+      "backgroundCrop": "Smart Crop",
+      "backgroundCropDesc": "Auto trim empty areas",
+      "formatPng": "PNG",
+      "formatPngDesc": "Supports transparent background",
+      "formatJpg": "JPG",
+      "formatJpgDesc": "Smaller file size"
+    },
+    "preview": {
+      "infoCard": "Info Card:",
+      "background": "Background:",
+      "format": "Format:",
+      "show": "Show",
+      "hide": "Hide",
+      "white": "White",
+      "transparent": "Transparent",
+      "crop": "Smart Crop"
+    }
+  },
+  "editableInfoCard": {
+    "noSelection": "Please select a card first",
+    "tooltips": {
+      "remove": "Remove this item",
+      "changeColor": "Click to change color",
+      "showLevel": "Show level",
+      "hideLevel": "Hide level"
+    },
+    "hints": {
+      "title": "Editing Tips:",
+      "editText": "• Click text to edit directly",
+      "editColor": "• Click color block to change color",
+      "editFields": "• Label names and levels can be edited separately",
+      "toggleLevel": "• Click eye icon to toggle level display",
+      "removeItem": "• Click minus button to remove entire item"
+    }
+  },
+  "cardTemplates": {
+    "travelLevel": {
+      "title": "Travel Level",
+      "subtitle": "Display your travel experience level in each Japanese prefecture",
+      "levels": {
+        "residence": "Residence (lived there)",
+        "lodging": "Lodging (stayed overnight)",
+        "visit": "Visit (tourism)",
+        "transit": "Transit (rest, transfer, etc.)",
+        "pass": "Pass (just passed through)",
+        "unvisited": "Unvisited"
+      }
+    },
+    "safetyIndex": {
+      "title": "Safety Index",
+      "subtitle": "Safety rating of each prefecture",
+      "levels": {
+        "verySafe": "Very Safe",
+        "safe": "Safe",
+        "normal": "Normal",
+        "caution": "Caution Required",
+        "dangerous": "Dangerous"
+      }
+    },
+    "populationDensity": {
+      "title": "Population Density",
+      "subtitle": "Population per square kilometer",
+      "levels": {
+        "categoryA": "Category A",
+        "categoryB": "Category B",
+        "categoryC": "Category C",
+        "categoryD": "Category D",
+        "categoryE": "Category E"
+      }
+    },
+    "customData": {
+      "title": "Custom Data",
+      "subtitle": "You can customize the data type you want to display",
+      "levels": {
+        "categoryA": "Category A",
+        "categoryB": "Category B",
+        "categoryC": "Category C",
+        "categoryD": "Category D",
+        "categoryE": "Category E"
+      }
+    }
+  },
+  "prefecture": {
+    "population": "Population",
+    "area": "Area",
+    "capital": "Capital",
+    "region": "Region",
+    "sqkm": "km²"
+  },
+  "common": {
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "edit": "Edit",
+    "delete": "Delete",
+    "level": "Level"
+  }
+}

@@ -3,6 +3,7 @@
 
 import { useMapContext } from '@/context/MapContext'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 export default function ControlPanel() {
     const {
@@ -13,22 +14,23 @@ export default function ControlPanel() {
         exportFormat,
         setExportFormat
     } = useMapContext()
+    const t = useTranslations('controlPanel')
 
     return (
         <div className="h-full bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-4 overflow-hidden flex flex-col">
             {/* 標題區 */}
             <div className="mb-4">
-                <h2 className="text-lg font-semibold text-gray-800">輸出設定</h2>
-                <p className="text-sm text-gray-600">調整地圖輸出選項</p>
+                <h2 className="text-lg font-semibold text-gray-800">{t('title')}</h2>
+                <p className="text-sm text-gray-600">{t('description')}</p>
             </div>
 
             {/* 設定區 */}
             <div className="flex-1 space-y-6 overflow-y-auto">
                 {/* 顯示控制 */}
                 <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-3">顯示選項</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-3">{t('sections.display')}</h3>
                     <label className="flex items-center justify-between cursor-pointer">
-                        <span className="text-sm text-gray-600">顯示資訊卡片</span>
+                        <span className="text-sm text-gray-600">{t('options.showInfoCard')}</span>
                         <div className="relative">
                             <input
                                 type="checkbox"
@@ -43,7 +45,7 @@ export default function ControlPanel() {
 
                 {/* 背景模式 */}
                 <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-3">背景模式</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-3">{t('sections.background')}</h3>
                     <div className="space-y-2">
                         <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
                             <input
@@ -55,8 +57,8 @@ export default function ControlPanel() {
                                 className="mr-3 text-blue-600"
                             />
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-gray-700">白色背景</p>
-                                <p className="text-xs text-gray-500">標準白色背景</p>
+                                <p className="text-sm font-medium text-gray-700">{t('options.backgroundWhite')}</p>
+                                <p className="text-xs text-gray-500">{t('options.backgroundWhiteDesc')}</p>
                             </div>
                         </label>
 
@@ -70,8 +72,8 @@ export default function ControlPanel() {
                                 className="mr-3 text-blue-600"
                             />
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-gray-700">透明背景</p>
-                                <p className="text-xs text-gray-500">適合疊加使用</p>
+                                <p className="text-sm font-medium text-gray-700">{t('options.backgroundTransparent')}</p>
+                                <p className="text-xs text-gray-500">{t('options.backgroundTransparentDesc')}</p>
                             </div>
                         </label>
 
@@ -85,8 +87,8 @@ export default function ControlPanel() {
                                 className="mr-3 text-blue-600"
                             />
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-gray-700">智能裁切</p>
-                                <p className="text-xs text-gray-500">自動裁切空白區域</p>
+                                <p className="text-sm font-medium text-gray-700">{t('options.backgroundCrop')}</p>
+                                <p className="text-xs text-gray-500">{t('options.backgroundCropDesc')}</p>
                             </div>
                         </label>
                     </div>
@@ -94,7 +96,7 @@ export default function ControlPanel() {
 
                 {/* 匯出格式 */}
                 <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-3">匯出格式</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-3">{t('sections.format')}</h3>
                     <div className="space-y-2">
                         <label className="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50 transition-colors">
                             <input
@@ -106,8 +108,8 @@ export default function ControlPanel() {
                                 className="mr-3 text-blue-600"
                             />
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-gray-700">PNG</p>
-                                <p className="text-xs text-gray-500">支援透明背景</p>
+                                <p className="text-sm font-medium text-gray-700">{t('options.formatPng')}</p>
+                                <p className="text-xs text-gray-500">{t('options.formatPngDesc')}</p>
                             </div>
                         </label>
 
@@ -121,8 +123,8 @@ export default function ControlPanel() {
                                 className="mr-3 text-blue-600"
                             />
                             <div className="flex-1">
-                                <p className="text-sm font-medium text-gray-700">JPG</p>
-                                <p className="text-xs text-gray-500">檔案較小</p>
+                                <p className="text-sm font-medium text-gray-700">{t('options.formatJpg')}</p>
+                                <p className="text-xs text-gray-500">{t('options.formatJpgDesc')}</p>
                             </div>
                         </label>
                     </div>
@@ -130,15 +132,15 @@ export default function ControlPanel() {
 
                 {/* 預覽區 */}
                 <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-3">目前設定預覽</h3>
+                    <h3 className="text-sm font-medium text-gray-700 mb-3">{t('sections.preview')}</h3>
                     <div className="bg-white border rounded-lg p-3 text-xs text-gray-600 space-y-1">
-                        <p>• 資訊卡片：{showInfoCard ? '顯示' : '隱藏'}</p>
-                        <p>• 背景：{
-                            backgroundMode === 'white' ? '白色' :
-                                backgroundMode === 'transparent' ? '透明' :
-                                    '智能裁切'
+                        <p>• {t('preview.infoCard')}{showInfoCard ? t('preview.show') : t('preview.hide')}</p>
+                        <p>• {t('preview.background')}{
+                            backgroundMode === 'white' ? t('preview.white') :
+                                backgroundMode === 'transparent' ? t('preview.transparent') :
+                                    t('preview.crop')
                         }</p>
-                        <p>• 格式：{exportFormat.toUpperCase()}</p>
+                        <p>• {t('preview.format')}{exportFormat.toUpperCase()}</p>
                     </div>
                 </div>
             </div>

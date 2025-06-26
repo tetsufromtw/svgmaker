@@ -3,6 +3,7 @@
 
 import { InfoCardConfig } from '@/types/card.types'
 import { useMapContext } from '@/context/MapContext'
+import { useEffect } from 'react'
 
 interface InfoCardProps {
     config: InfoCardConfig
@@ -10,6 +11,24 @@ interface InfoCardProps {
 
 export default function InfoCard({ config }: InfoCardProps) {
     const { selectedColor, selectedLevel, setSelectedColor, setSelectedLevel } = useMapContext()
+
+    // 當 config 改變時，檢查是否需要設定預設選中項
+    useEffect(() => {
+        if (config && config.legendItems.length > 0) {
+            const firstItem = config.legendItems[0]
+            
+            // 檢查當前選中的顏色是否在這個卡片的項目中
+            const isCurrentSelectionValid = config.legendItems.some(
+                item => item.color === selectedColor && item.level === selectedLevel
+            )
+            
+            // 如果當前選中無效，則選中第一個項目
+            if (!isCurrentSelectionValid) {
+                setSelectedColor(firstItem.color)
+                setSelectedLevel(firstItem.level)
+            }
+        }
+    }, [config, selectedColor, selectedLevel, setSelectedColor, setSelectedLevel])
     return (
         <div className="bg-white rounded-lg shadow-md p-4 max-w-sm">
             <h3 className="text-lg font-bold mb-1">{config.title}</h3>

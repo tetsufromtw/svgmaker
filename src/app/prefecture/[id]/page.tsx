@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { prefectures, getPrefectureById, regions } from '@/data/prefectures'
 
 interface Props {
-    params: { id: string }
+    params: Promise<{ id: string }>
 }
 
 // 生成靜態路徑
@@ -16,7 +16,8 @@ export async function generateStaticParams() {
 
 // 生成 SEO metadata
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    const prefecture = getPrefectureById(params.id)
+    const { id } = await params;
+    const prefecture = getPrefectureById(id)
 
     if (!prefecture) {
         return {
@@ -36,8 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
-export default function PrefecturePage({ params }: Props) {
-    const prefecture = getPrefectureById(params.id)
+export default async function PrefecturePage({ params }: Props) {
+    const { id } = await params;
+    const prefecture = getPrefectureById(id)
 
     if (!prefecture) {
         notFound()

@@ -29,7 +29,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
     const [currentMap, setCurrentMap] = useState('japan')
     const [activeTab, setActiveTab] = useState('japan')
     const [prefectureColors, setPrefectureColors] = useState<Record<string, string>>({})
-    const [selectedColor, setSelectedColor] = useState<string>('#ef4444') // 預設紅色
+    const [selectedColor, setSelectedColor] = useState<string>('#fca5a5') // 預設為第一個卡片第一個項目的顏色
     const [selectedLevel, setSelectedLevel] = useState<number | string>(5) // 預設等級5
     const [showInfoCard, setShowInfoCard] = useState<boolean>(true)
     const [backgroundMode, setBackgroundMode] = useState<'white' | 'transparent' | 'crop'>('white')
@@ -44,7 +44,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
 
     // 提供一個重置選中顏色的方法
     const resetSelectedColor = () => {
-        setSelectedColor('#ef4444')
+        setSelectedColor('#fca5a5')
         setSelectedLevel(5)
     }
 

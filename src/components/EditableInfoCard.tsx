@@ -4,9 +4,12 @@
 import { useCardContext } from '@/context/CardContext'
 import { useState, useRef } from 'react'
 import ColorPicker from './ColorPicker'
+import { useTranslations } from 'next-intl'
 
 export default function EditableInfoCard() {
     const { activeCardConfig, updateActiveCardConfig } = useCardContext()
+    const t = useTranslations('editableInfoCard')
+    const tCommon = useTranslations('common')
     const [isEditingTitle, setIsEditingTitle] = useState(false)
     const [isEditingSubtitle, setIsEditingSubtitle] = useState(false)
     const [editingItemIndex, setEditingItemIndex] = useState<number | null>(null)
@@ -19,7 +22,7 @@ export default function EditableInfoCard() {
     if (!activeCardConfig) {
         return (
             <div className="text-center text-gray-400 py-8">
-                <p>請先選擇一張卡片</p>
+                <p>{t('noSelection')}</p>
             </div>
         )
     }
@@ -161,7 +164,7 @@ export default function EditableInfoCard() {
                                 <button
                                     onClick={() => handleRemoveLegendItem(index)}
                                     className="rounded p-1 text-red-500 hover:bg-red-50 flex-shrink-0"
-                                    title="移除此項目"
+                                    title={t('tooltips.remove')}
                                 >
                                     <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4"></path>
@@ -174,7 +177,7 @@ export default function EditableInfoCard() {
                                     className="h-6 w-6 rounded flex-shrink-0 cursor-pointer border-2 border-transparent hover:border-blue-300 hover:scale-110 transition-all duration-200"
                                     style={{ backgroundColor: item.color }}
                                     onClick={(e) => handleColorClick(index, e)}
-                                    title="點擊更改顏色"
+                                    title={t('tooltips.changeColor')}
                                 />
 
                                 {/* 標籤名稱 */}
@@ -214,7 +217,7 @@ export default function EditableInfoCard() {
                                             className="flex-[1] text-sm text-gray-500 cursor-pointer hover:bg-gray-100 px-1 rounded"
                                             onClick={() => setEditingLevelIndex(index)}
                                         >
-                                            {typeof item.level === 'number' ? `等級 ${item.level}` : item.level}
+                                            {typeof item.level === 'number' ? `${tCommon('level')} ${item.level}` : item.level}
                                         </span>
                                     )
                                 )}
@@ -224,7 +227,7 @@ export default function EditableInfoCard() {
                                     <button
                                         onClick={() => toggleLevelVisibility(index)}
                                         className="rounded p-1 hover:bg-gray-200"
-                                        title={item.hideLevel ? "顯示等級" : "隱藏等級"}
+                                        title={item.hideLevel ? t('tooltips.showLevel') : t('tooltips.hideLevel')}
                                     >
                                         <svg className="h-4 w-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             {item.hideLevel ? (
@@ -245,13 +248,13 @@ export default function EditableInfoCard() {
 
             {/* 編輯提示 */}
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm text-blue-700">
-                <p className="font-semibold mb-1">編輯提示：</p>
+                <p className="font-semibold mb-1">{t('hints.title')}</p>
                 <ul className="space-y-1 text-xs">
-                    <li>• 點擊文字可直接編輯</li>
-                    <li>• 點擊色塊可更改顏色</li>
-                    <li>• 標籤名稱和等級可分別編輯</li>
-                    <li>• 點擊眼睛圖示可隱藏等級顯示</li>
-                    <li>• 點擊減號可移除整個項目</li>
+                    <li>{t('hints.editText')}</li>
+                    <li>{t('hints.editColor')}</li>
+                    <li>{t('hints.editFields')}</li>
+                    <li>{t('hints.toggleLevel')}</li>
+                    <li>{t('hints.removeItem')}</li>
                 </ul>
             </div>
 

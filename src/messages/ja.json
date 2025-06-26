@@ -1,0 +1,130 @@
+{
+  "homepage": {
+    "title": "日本地図マーカーツール",
+    "subtitle": "あなただけのテーマ地図を作成",
+    "description": "無料の地図マーカーツール、色のカスタマイズとエクスポート機能をサポート"
+  },
+  "mapTabs": {
+    "japan": "日本 🗾",
+    "taiwan": "台湾 🏔️",
+    "usa": "アメリカ 🗽",
+    "introduce": "紹介 👤"
+  },
+  "leftPanel": {
+    "title": "カードエディター",
+    "description": "選択した情報カードの内容を編集"
+  },
+  "controlPanel": {
+    "title": "出力設定",
+    "description": "地図出力オプションを調整",
+    "sections": {
+      "display": "表示オプション",
+      "background": "背景モード",
+      "format": "エクスポート形式",
+      "preview": "現在の設定プレビュー"
+    },
+    "options": {
+      "showInfoCard": "情報カードを表示",
+      "backgroundWhite": "白い背景",
+      "backgroundWhiteDesc": "標準的な白い背景",
+      "backgroundTransparent": "透明背景",
+      "backgroundTransparentDesc": "オーバーレイに適しています",
+      "backgroundCrop": "スマートクロップ",
+      "backgroundCropDesc": "空白領域を自動トリミング",
+      "formatPng": "PNG",
+      "formatPngDesc": "透明背景をサポート",
+      "formatJpg": "JPG",
+      "formatJpgDesc": "ファイルサイズが小さい"
+    },
+    "preview": {
+      "infoCard": "情報カード：",
+      "background": "背景：",
+      "format": "形式：",
+      "show": "表示",
+      "hide": "非表示",
+      "white": "白",
+      "transparent": "透明",
+      "crop": "スマートクロップ"
+    }
+  },
+  "editableInfoCard": {
+    "noSelection": "まずカードを選択してください",
+    "tooltips": {
+      "remove": "この項目を削除",
+      "changeColor": "クリックして色を変更",
+      "showLevel": "レベルを表示",
+      "hideLevel": "レベルを非表示"
+    },
+    "hints": {
+      "title": "編集ヒント：",
+      "editText": "• テキストをクリックして直接編集",
+      "editColor": "• 色ブロックをクリックして色を変更",
+      "editFields": "• ラベル名とレベルを個別に編集可能",
+      "toggleLevel": "• 目のアイコンをクリックしてレベル表示を切り替え",
+      "removeItem": "• マイナスボタンで項目全体を削除"
+    }
+  },
+  "cardTemplates": {
+    "travelLevel": {
+      "title": "制県レベル",
+      "subtitle": "日本各都道府県での旅行経験レベルを表示",
+      "levels": {
+        "residence": "居住（住んだことがある）",
+        "lodging": "宿泊（泊まったことがある）",
+        "visit": "訪問（観光したことがある）",
+        "transit": "経由（休憩、乗換えなど）",
+        "pass": "通過（通っただけ）",
+        "unvisited": "未訪問"
+      }
+    },
+    "safetyIndex": {
+      "title": "安全指数",
+      "subtitle": "各都道府県の安全評価",
+      "levels": {
+        "verySafe": "非常に安全",
+        "safe": "安全",
+        "normal": "普通",
+        "caution": "注意が必要",
+        "dangerous": "危険"
+      }
+    },
+    "populationDensity": {
+      "title": "人口密度",
+      "subtitle": "一平方キロメートルあたりの人口数",
+      "levels": {
+        "categoryA": "カテゴリー A",
+        "categoryB": "カテゴリー B",
+        "categoryC": "カテゴリー C",
+        "categoryD": "カテゴリー D",
+        "categoryE": "カテゴリー E"
+      }
+    },
+    "customData": {
+      "title": "カスタムデータ",
+      "subtitle": "表示したいデータのタイプをカスタマイズできます",
+      "levels": {
+        "categoryA": "カテゴリー A",
+        "categoryB": "カテゴリー B",
+        "categoryC": "カテゴリー C",
+        "categoryD": "カテゴリー D",
+        "categoryE": "カテゴリー E"
+      }
+    }
+  },
+  "prefecture": {
+    "population": "人口",
+    "area": "面積",
+    "capital": "県庁所在地",
+    "region": "地方",
+    "sqkm": "平方キロメートル"
+  },
+  "common": {
+    "loading": "読み込み中...",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "confirm": "確認",
+    "edit": "編集",
+    "delete": "削除",
+    "level": "レベル"
+  }
+}

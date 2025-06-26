@@ -1,0 +1,130 @@
+{
+  "homepage": {
+    "title": "日本地圖標記工具",
+    "subtitle": "創建您的專屬主題地圖",
+    "description": "免費的地圖標記工具，支援自訂顏色與匯出功能"
+  },
+  "mapTabs": {
+    "japan": "日本 🗾",
+    "taiwan": "台灣 🏔️",
+    "usa": "美國 🗽",
+    "introduce": "Introduce 👤"
+  },
+  "leftPanel": {
+    "title": "卡片編輯器",
+    "description": "編輯選中的資訊卡片內容"
+  },
+  "controlPanel": {
+    "title": "輸出設定",
+    "description": "調整地圖輸出選項",
+    "sections": {
+      "display": "顯示選項",
+      "background": "背景模式",
+      "format": "匯出格式",
+      "preview": "目前設定預覽"
+    },
+    "options": {
+      "showInfoCard": "顯示資訊卡片",
+      "backgroundWhite": "白色背景",
+      "backgroundWhiteDesc": "標準白色背景",
+      "backgroundTransparent": "透明背景",
+      "backgroundTransparentDesc": "適合疊加使用",
+      "backgroundCrop": "智能裁切",
+      "backgroundCropDesc": "自動裁切空白區域",
+      "formatPng": "PNG",
+      "formatPngDesc": "支援透明背景",
+      "formatJpg": "JPG",
+      "formatJpgDesc": "檔案較小"
+    },
+    "preview": {
+      "infoCard": "資訊卡片：",
+      "background": "背景：",
+      "format": "格式：",
+      "show": "顯示",
+      "hide": "隱藏",
+      "white": "白色",
+      "transparent": "透明",
+      "crop": "智能裁切"
+    }
+  },
+  "editableInfoCard": {
+    "noSelection": "請先選擇一張卡片",
+    "tooltips": {
+      "remove": "移除此項目",
+      "changeColor": "點擊更改顏色",
+      "showLevel": "顯示等級",
+      "hideLevel": "隱藏等級"
+    },
+    "hints": {
+      "title": "編輯提示：",
+      "editText": "• 點擊文字可直接編輯",
+      "editColor": "• 點擊色塊可更改顏色",
+      "editFields": "• 標籤名稱和等級可分別編輯",
+      "toggleLevel": "• 點擊眼睛圖示可隱藏等級顯示",
+      "removeItem": "• 點擊減號可移除整個項目"
+    }
+  },
+  "cardTemplates": {
+    "travelLevel": {
+      "title": "制縣等級",
+      "subtitle": "顯示您在日本各都道府縣的旅遊經歷等級",
+      "levels": {
+        "residence": "住居（居住過）",
+        "lodging": "宿泊（住宿過）",
+        "visit": "訪問（遊玩過）",
+        "transit": "接地（休息、換車等）",
+        "pass": "通過（路過）",
+        "unvisited": "未到訪"
+      }
+    },
+    "safetyIndex": {
+      "title": "安全指數",
+      "subtitle": "各都道府縣的安全評級",
+      "levels": {
+        "verySafe": "非常安全",
+        "safe": "安全",
+        "normal": "普通",
+        "caution": "需注意",
+        "dangerous": "危險"
+      }
+    },
+    "populationDensity": {
+      "title": "人口密度",
+      "subtitle": "每平方公里人口數",
+      "levels": {
+        "categoryA": "類別 A",
+        "categoryB": "類別 B",
+        "categoryC": "類別 C",
+        "categoryD": "類別 D",
+        "categoryE": "類別 E"
+      }
+    },
+    "customData": {
+      "title": "自訂數據",
+      "subtitle": "您可以自訂想要顯示的數據類型",
+      "levels": {
+        "categoryA": "類別 A",
+        "categoryB": "類別 B",
+        "categoryC": "類別 C",
+        "categoryD": "類別 D",
+        "categoryE": "類別 E"
+      }
+    }
+  },
+  "prefecture": {
+    "population": "人口",
+    "area": "面積",
+    "capital": "首府",
+    "region": "地區",
+    "sqkm": "平方公里"
+  },
+  "common": {
+    "loading": "載入中...",
+    "save": "儲存",
+    "cancel": "取消",
+    "confirm": "確認",
+    "edit": "編輯",
+    "delete": "刪除",
+    "level": "等級"
+  }
+}

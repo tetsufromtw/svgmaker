@@ -2,11 +2,18 @@ export interface Prefecture {
   id: string
   name: string
   nameEn: string
+  nameJa: string
   region: string
+  regionEn: string
+  regionJa: string
   capital: string
+  capitalEn: string
+  capitalJa: string
   population: number
   area: number
   description: string
+  descriptionEn: string
+  descriptionJa: string
 }
 
 export const prefectures: Prefecture[] = [
@@ -14,21 +21,35 @@ export const prefectures: Prefecture[] = [
     id: 'hokkaido',
     name: '北海道',
     nameEn: 'Hokkaido',
+    nameJa: '北海道',
     region: '北海道',
+    regionEn: 'Hokkaido',
+    regionJa: '北海道',
     capital: '札幌市',
+    capitalEn: 'Sapporo',
+    capitalJa: '札幌市',
     population: 5224614,
     area: 83424,
-    description: '日本最北端的都道府縣，以廣闊的自然景觀、美味的海鮮和雪祭聞名。'
+    description: '日本最北端的都道府縣，以廣闊的自然景觀、美味的海鮮和雪祭聞名。',
+    descriptionEn: 'The northernmost prefecture of Japan, famous for its vast natural landscapes, delicious seafood, and snow festivals.',
+    descriptionJa: '日本最北端の都道府県で、広大な自然景観、美味しい海産物、雪祭りで有名。'
   },
   {
     id: 'aomori',
     name: '青森県',
     nameEn: 'Aomori',
+    nameJa: '青森県',
     region: '東北',
+    regionEn: 'Tohoku',
+    regionJa: '東北',
     capital: '青森市',
+    capitalEn: 'Aomori',
+    capitalJa: '青森市',
     population: 1237984,
     area: 9646,
-    description: '以蘋果產量日本第一和睡魔祭聞名，擁有豐富的自然資源。'
+    description: '以蘋果產量日本第一和睡魔祭聞名，擁有豐富的自然資源。',
+    descriptionEn: 'Famous for being the top apple producer in Japan and the Nebuta Festival, with abundant natural resources.',
+    descriptionJa: 'りんごの生産量日本一とねぶた祭りで有名で、豊富な自然資源を有する。'
   },
   {
     id: 'iwate',
@@ -134,11 +155,18 @@ export const prefectures: Prefecture[] = [
     id: 'tokyo',
     name: '東京都',
     nameEn: 'Tokyo',
+    nameJa: '東京都',
     region: '關東',
+    regionEn: 'Kanto',
+    regionJa: '関東',
     capital: '新宿區',
+    capitalEn: 'Shinjuku',
+    capitalJa: '新宿区',
     population: 14047594,
     area: 2194,
-    description: '日本首都，世界級大都市，政治、經濟、文化的中心。'
+    description: '日本首都，世界級大都市，政治、經濟、文化的中心。',
+    descriptionEn: 'Japan\'s capital, a world-class metropolis and the center of politics, economy, and culture.',
+    descriptionJa: '日本の首都であり、世界有数の大都市で、政治・経済・文化の中心。'
   },
   {
     id: 'kanagawa',
@@ -274,11 +302,18 @@ export const prefectures: Prefecture[] = [
     id: 'osaka',
     name: '大阪府',
     nameEn: 'Osaka',
+    nameJa: '大阪府',
     region: '近畿',
+    regionEn: 'Kinki',
+    regionJa: '近畿',
     capital: '大阪市',
+    capitalEn: 'Osaka',
+    capitalJa: '大阪市',
     population: 8837685,
     area: 1905,
-    description: '西日本的經濟中心，以美食文化、大阪城和環球影城聞名。'
+    description: '西日本的經濟中心，以美食文化、大阪城和環球影城聞名。',
+    descriptionEn: 'The economic center of western Japan, famous for its food culture, Osaka Castle, and Universal Studios.',
+    descriptionJa: '西日本の経済の中心地で、食文化、大阪城、ユニバーサル・スタジオで有名。'
   },
   {
     id: 'hyogo',
@@ -484,15 +519,15 @@ export const prefectures: Prefecture[] = [
 
 // 地區分類
 export const regions = [
-  { id: 'hokkaido', name: '北海道', prefectures: ['hokkaido'] },
-  { id: 'tohoku', name: '東北', prefectures: ['aomori', 'iwate', 'miyagi', 'akita', 'yamagata', 'fukushima'] },
-  { id: 'kanto', name: '關東', prefectures: ['ibaraki', 'tochigi', 'gunma', 'saitama', 'chiba', 'tokyo', 'kanagawa'] },
-  { id: 'chubu', name: '中部', prefectures: ['niigata', 'toyama', 'ishikawa', 'fukui', 'yamanashi', 'nagano', 'gifu', 'shizuoka', 'aichi'] },
-  { id: 'kinki', name: '近畿', prefectures: ['mie', 'shiga', 'kyoto', 'osaka', 'hyogo', 'nara', 'wakayama'] },
-  { id: 'chugoku', name: '中國', prefectures: ['tottori', 'shimane', 'okayama', 'hiroshima', 'yamaguchi'] },
-  { id: 'shikoku', name: '四國', prefectures: ['tokushima', 'kagawa', 'ehime', 'kochi'] },
-  { id: 'kyushu', name: '九州', prefectures: ['fukuoka', 'saga', 'nagasaki', 'kumamoto', 'oita', 'miyazaki', 'kagoshima'] },
-  { id: 'okinawa', name: '沖縄', prefectures: ['okinawa'] }
+  { id: 'hokkaido', name: '北海道', nameEn: 'Hokkaido', nameJa: '北海道', prefectures: ['hokkaido'] },
+  { id: 'tohoku', name: '東北', nameEn: 'Tohoku', nameJa: '東北', prefectures: ['aomori', 'iwate', 'miyagi', 'akita', 'yamagata', 'fukushima'] },
+  { id: 'kanto', name: '關東', nameEn: 'Kanto', nameJa: '関東', prefectures: ['ibaraki', 'tochigi', 'gunma', 'saitama', 'chiba', 'tokyo', 'kanagawa'] },
+  { id: 'chubu', name: '中部', nameEn: 'Chubu', nameJa: '中部', prefectures: ['niigata', 'toyama', 'ishikawa', 'fukui', 'yamanashi', 'nagano', 'gifu', 'shizuoka', 'aichi'] },
+  { id: 'kinki', name: '近畿', nameEn: 'Kinki', nameJa: '近畿', prefectures: ['mie', 'shiga', 'kyoto', 'osaka', 'hyogo', 'nara', 'wakayama'] },
+  { id: 'chugoku', name: '中國', nameEn: 'Chugoku', nameJa: '中国', prefectures: ['tottori', 'shimane', 'okayama', 'hiroshima', 'yamaguchi'] },
+  { id: 'shikoku', name: '四國', nameEn: 'Shikoku', nameJa: '四国', prefectures: ['tokushima', 'kagawa', 'ehime', 'kochi'] },
+  { id: 'kyushu', name: '九州', nameEn: 'Kyushu', nameJa: '九州', prefectures: ['fukuoka', 'saga', 'nagasaki', 'kumamoto', 'oita', 'miyazaki', 'kagoshima'] },
+  { id: 'okinawa', name: '沖縄', nameEn: 'Okinawa', nameJa: '沖縄', prefectures: ['okinawa'] }
 ]
 
 // 輔助函數
@@ -504,4 +539,43 @@ export function getPrefecturesByRegion(regionId: string): Prefecture[] {
   const region = regions.find(r => r.id === regionId)
   if (!region) return []
   return prefectures.filter(p => region.prefectures.includes(p.id))
+}
+
+// 根據語言取得都道府縣名稱
+export function getPrefectureName(prefecture: Prefecture, locale: string): string {
+  switch (locale) {
+    case 'en':
+      return prefecture.nameEn
+    case 'ja':
+      return prefecture.nameJa || prefecture.name
+    default:
+      return prefecture.name
+  }
+}
+
+// 根據語言取得地區名稱
+export function getRegionName(regionId: string, locale: string): string {
+  const region = regions.find(r => r.id === regionId)
+  if (!region) return ''
+  
+  switch (locale) {
+    case 'en':
+      return region.nameEn
+    case 'ja':
+      return region.nameJa
+    default:
+      return region.name
+  }
+}
+
+// 根據語言取得都道府縣描述
+export function getPrefectureDescription(prefecture: Prefecture, locale: string): string {
+  switch (locale) {
+    case 'en':
+      return prefecture.descriptionEn || prefecture.description
+    case 'ja':
+      return prefecture.descriptionJa || prefecture.description
+    default:
+      return prefecture.description
+  }
 }

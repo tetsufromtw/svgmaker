@@ -1,16 +1,23 @@
 'use client'
 
 import { useMapContext } from '@/context/MapContext'
+import { useTranslations } from 'next-intl'
 
-const tabs = [
-    { id: 'japan', label: '日本 🗾', available: true },
-    { id: 'taiwan', label: '台灣 🏝️', available: false },
-    { id: 'usa', label: '美國 🗽', available: false },
-    { id: 'profile', label: 'Introduce 👤', available: true },
+const tabIds = [
+    { id: 'japan', available: true },
+    { id: 'taiwan', available: false },
+    { id: 'usa', available: false },
+    { id: 'profile', available: true },
 ]
 
 export default function MapTabs() {
     const { activeTab, setActiveTab } = useMapContext()
+    const t = useTranslations('mapTabs')
+
+    const tabs = tabIds.map(tab => ({
+        ...tab,
+        label: tab.id === 'profile' ? t('introduce') : t(tab.id)
+    }))
 
     return (
         <div className="flex items-end mb-0">
