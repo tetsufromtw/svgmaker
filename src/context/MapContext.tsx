@@ -20,7 +20,8 @@ interface MapContextType {
     setBackgroundMode: (mode: 'white' | 'transparent' | 'crop') => void
     exportFormat: 'png' | 'jpg'
     setExportFormat: (format: 'png' | 'jpg') => void
-
+    cardSize: { width: number; height: number }
+    setCardSize: (size: { width: number; height: number }) => void
 }
 
 const MapContext = createContext<MapContextType | undefined>(undefined)
@@ -34,6 +35,7 @@ export function MapProvider({ children }: { children: ReactNode }) {
     const [showInfoCard, setShowInfoCard] = useState<boolean>(true)
     const [backgroundMode, setBackgroundMode] = useState<'white' | 'transparent' | 'crop'>('white')
     const [exportFormat, setExportFormat] = useState<'png' | 'jpg'>('png')
+    const [cardSize, setCardSize] = useState<{ width: number; height: number }>({ width: 200, height: 240 })
 
     const setPrefectureColor = (prefectureId: string, color: string) => {
         setPrefectureColors(prev => ({
@@ -66,7 +68,9 @@ export function MapProvider({ children }: { children: ReactNode }) {
                 backgroundMode,
                 setBackgroundMode,
                 exportFormat,
-                setExportFormat
+                setExportFormat,
+                cardSize,
+                setCardSize
             }}
         >
             {children}

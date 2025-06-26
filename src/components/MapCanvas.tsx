@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react'
 import { useCardContext } from '@/context/CardContext'
-import InfoCard from './InfoCard'
+import ResizableInfoCard from './ResizableInfoCard'
 import { useMapClick } from '@/hooks/useMapClick'
 import { useMapContext } from '@/context/MapContext'
 import html2canvas from 'html2canvas-pro'
@@ -84,6 +84,13 @@ export default function MapCanvas() {
 
     // 處理長按開始
     const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+        // 檢查是否點擊在調整大小控制點上
+        const target = e.target as HTMLElement
+        if (target.style.cursor && target.style.cursor.includes('resize')) {
+            // 如果點擊在調整大小控制點上，不處理拖移
+            return
+        }
+
         // 如果已經在編輯模式，直接開始拖動
         if (isEditMode) {
             if (!infoCardRef.current || !mapContainerRef.current) return
@@ -391,7 +398,7 @@ export default function MapCanvas() {
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseUp} // 滑鼠離開時也要清除計時器
                 >
-                    <InfoCard config={activeCardConfig} />
+                    <ResizableInfoCard config={activeCardConfig} />
 
                     {/* iOS 風格的關閉按鈕 */}
                     {isEditMode && (

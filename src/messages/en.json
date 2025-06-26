@@ -125,6 +125,165 @@
     "confirm": "Confirm",
     "edit": "Edit",
     "delete": "Delete",
-    "level": "Level"
+    "level": "Level",
+    "backToHome": "Back to Home",
+    "contactUs": "Contact Us"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: June 26, 2024",
+      "introduction": "We value your privacy and this policy explains how we collect, use, and protect your information.",
+      "dataCollection": {
+        "title": "Data Collection",
+        "content": "We may collect the following types of information:",
+        "items": [
+          "Browser information and IP addresses (for website analytics)",
+          "Anonymous usage statistics collected via Google Analytics",
+          "Map settings stored in your browser (localStorage)",
+          "Your interactions on the website (clicks, time spent, etc.)"
+        ]
+      },
+      "dataUsage": {
+        "title": "Data Usage",
+        "content": "We use the collected information to:",
+        "items": [
+          "Improve website functionality and user experience",
+          "Analyze website usage trends",
+          "Fix technical issues",
+          "Provide customer support"
+        ]
+      },
+      "dataProtection": {
+        "title": "Data Protection",
+        "content": "We are committed to protecting your data:",
+        "items": [
+          "We will not sell your personal information to third parties",
+          "We use secure servers and encryption technology",
+          "You can clear browser data at any time to remove locally stored settings",
+          "We comply with relevant data protection regulations"
+        ]
+      },
+      "contact": "If you have any questions about this privacy policy, please contact us."
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last updated: June 26, 2024",
+      "acceptance": "By using this website, you agree to comply with the following terms of service.",
+      "serviceDescription": {
+        "title": "Service Description",
+        "content": "This website provides a free Japan map marking tool that allows users to:",
+        "items": [
+          "Mark different colors and levels on the Japan map",
+          "Customize information cards and legends",
+          "Export maps in image formats",
+          "Adjust map size and layout"
+        ]
+      },
+      "userResponsibilities": {
+        "title": "User Responsibilities",
+        "content": "When using this service, you agree to:",
+        "items": [
+          "Not use this service for illegal or harmful purposes",
+          "Not attempt to damage or interfere with website functionality",
+          "Not scrape website content in bulk",
+          "Respect the rights of other users"
+        ]
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "content": "Important notices:",
+        "items": [
+          "This service is provided 'as is' without guarantee of error-free or uninterrupted operation",
+          "We are not responsible for the accuracy of map data",
+          "Service may be suspended for maintenance or updates",
+          "We reserve the right to modify or terminate the service at any time"
+        ]
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "content": "Regarding copyright and usage rights:",
+        "items": [
+          "The website's code and design belong to the developer",
+          "The map content you create belongs to you",
+          "You can freely use and share the maps you create",
+          "Please do not copy or republish the core functionality of this website"
+        ]
+      }
+    },
+    "about": {
+      "title": "About Us",
+      "introduction": "Welcome to the Japan Map Marker Tool!",
+      "mission": {
+        "title": "Our Mission",
+        "content": "We are committed to providing simple and practical map visualization tools that enable everyone to easily create professional themed maps."
+      },
+      "features": {
+        "title": "Key Features",
+        "items": [
+          "Complete marking support for all 47 prefectures",
+          "Multiple preset templates (travel level, safety index, etc.)",
+          "Resizable information cards",
+          "High-quality image export functionality",
+          "Multi-language support (Chinese, Japanese, English)",
+          "Completely free to use"
+        ]
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "items": [
+          "Japan travel planning and travel level display",
+          "Business data visualization and regional analysis",
+          "Educational purposes and geographic information display",
+          "Social media sharing and content creation",
+          "Personal records and memory organization"
+        ]
+      },
+      "technology": {
+        "title": "Technical Features",
+        "content": "This tool is developed using modern web technologies including React, Next.js, and TypeScript, ensuring excellent user experience and performance."
+      },
+      "contact": "If you have any suggestions or questions, please feel free to contact us!"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "introduction": "We'd love to hear from you!",
+      "email": {
+        "title": "Email",
+        "description": "General inquiries and technical support:",
+        "responseTime": "We typically respond within 3-5 business days."
+      },
+      "support": {
+        "title": "Technical Support",
+        "items": [
+          "Feature usage issues",
+          "Bug reports",
+          "Browser compatibility problems",
+          "Export functionality failures"
+        ]
+      },
+      "feedback": {
+        "title": "Feedback",
+        "items": [
+          "New feature suggestions",
+          "User experience improvements",
+          "Interface design suggestions",
+          "Content update requests"
+        ]
+      },
+      "business": {
+        "title": "Business Cooperation",
+        "items": [
+          "API integration needs",
+          "Custom development",
+          "Brand partnership opportunities",
+          "Media interviews"
+        ]
+      },
+      "socialMedia": {
+        "title": "Social Media",
+        "description": "Follow us for the latest news and feature updates."
+      }
+    }
   }
 }

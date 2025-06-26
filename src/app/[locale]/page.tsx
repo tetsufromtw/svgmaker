@@ -9,6 +9,7 @@ import AdSpace from '@/components/AdSpace'
 import LeftPanel from '@/components/LeftPanel'
 import ControlPanel from '@/components/ControlPanel'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
+import Footer from '@/components/Footer'
 import { MapProvider } from '@/context/MapContext'
 import { CardProvider } from '@/context/CardContext'
 import { useMapContext } from '@/context/MapContext'
@@ -141,6 +142,9 @@ export default function Home() {
               熊本県、大分県、宮崎県、鹿児島県、沖縄県
             </p>
           </div>
+
+          {/* Footer */}
+          <Footer />
         </CardProvider>
       </MapProvider>
     </>
